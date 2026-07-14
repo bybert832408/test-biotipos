@@ -2,466 +2,93 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Test de Biotipos Unani</title>
-<meta name="description" content="Descubre tu biotipo según la medicina Unani: Colérico, Sanguíneo, Flemático o Melancólico. Test de 20 preguntas con recomendaciones de alimentación y ejercicio.">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>Test de Biotipos Unani — Descubre tu temperamento</title>
+<meta name="description" content="Test de 20 preguntas basado en la medicina Unani. Descubre tu biotipo, alimentación y ejercicio ideal.">
 <meta property="og:title" content="🧬 Test de Biotipos Unani">
 <meta property="og:description" content="Descubre tu biotipo dominante, qué comer y qué ejercicio te conviene. 20 preguntas, 5 minutos.">
-<meta property="og:type" content="website">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:#f5f3f0;min-height:100vh;color:#1a1a2e;-webkit-text-size-adjust:100%}
-.ctn{max-width:560px;margin:0 auto;padding:16px}
-.card{background:#fff;border-radius:20px;padding:24px 20px;box-shadow:0 2px 20px rgba(0,0,0,.06);margin-bottom:16px}
-.fade{animation:fadeIn .3s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-button{font-family:inherit;-webkit-tap-highlight-color:transparent}
-.btn-main{display:block;width:100%;padding:16px;border:none;border-radius:14px;background:linear-gradient(135deg,#1a1a2e,#2d2d4e);color:#fff;font-size:16px;font-weight:700;cursor:pointer;letter-spacing:.3px}
-.btn-wa{display:block;width:100%;padding:15px;border:2px solid #25D366;border-radius:14px;background:#fff;color:#25D366;font-size:15px;font-weight:700;cursor:pointer;margin-top:10px}
-.btn-reset{display:block;width:100%;padding:15px;border:none;border-radius:14px;background:linear-gradient(135deg,#1a1a2e,#2d2d4e);color:#fff;font-size:15px;font-weight:700;cursor:pointer;margin-bottom:10px}
-.opt-btn{padding:15px 16px;border:1.5px solid #e0e0e0;border-radius:14px;background:#fff;font-size:14px;color:#333;text-align:left;cursor:pointer;line-height:1.45;width:100%;transition:all .15s ease;font-family:inherit}
-.opt-btn:active{border-color:#1a1a2e;background:#f5f5fa;border-width:2px}
-.badge{display:inline-flex;align-items:center;gap:6px;background:#f0f0f0;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:500;color:#555;margin-bottom:16px}
-.disc{font-size:10px;color:#bbb;text-align:center;line-height:1.5;margin-top:14px}
-.tab-row{display:flex;gap:8px;margin-bottom:14px}
-.tab-btn{flex:1;padding:10px 8px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;text-align:center;transition:all .15s;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:5px}
-.tab-btn.on{border:2px solid #1a1a2e;background:#1a1a2e;color:#fff}
-.tab-btn.off{border:1.5px solid #ddd;background:#fff;color:#777}
-.bio-card{border-radius:16px;padding:20px;margin-bottom:14px}
-.chart-track{background:#e0e0e0;border-radius:6px;height:10px;overflow:hidden}
-.chart-fill{height:100%;border-radius:6px;transition:width .8s ease}
-.section-title{font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.item-row{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#444;line-height:1.5;margin-bottom:6px}
-.item-icon{flex-shrink:0;margin-top:1px}
-.tip-box{margin-top:20px;padding:14px;border-radius:12px;border:1px solid}
-.tip-title{font-size:12px;font-weight:700;color:#1a1a2e;margin-bottom:6px}
-.tip-text{font-size:12px;color:#555;line-height:1.6}
-.info-card{border-radius:14px;padding:16px;margin-bottom:14px;border-width:1.5px;border-style:solid}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.grid-cell{padding:8px 10px;background:rgba(255,255,255,.7);border-radius:10px;font-size:12px;color:#555}
-.back-btn{display:block;margin:18px auto 0;padding:10px 24px;border:none;background:transparent;color:#999;font-size:13px;cursor:pointer;font-family:inherit}
-.el-chip{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 14px;border-radius:14px;min-width:70}
-.el-chip .emoji{font-size:28px}
-.el-chip .name{font-size:11px;font-weight:600}
-.el-chip .sub{font-size:10px;color:#999}
-.feat-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
-.feat-icon{font-size:22px;flex-shrink:0;margin-top:2px}
-.feat-title{font-size:14px;font-weight:600;color:#1a1a2e}
-.feat-desc{font-size:12px;color:#888;line-height:1.4}
-.progress-wrap{display:flex;align-items:center;gap:10px;margin-bottom:20px}
-.progress-bar{flex:1;background:#e8e8e8;border-radius:6px;height:7px;overflow:hidden}
-.progress-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#27ae60,#2980b9,#e67e22,#c0392b);transition:width .3s ease}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:#f5f3f0;min-height:100vh;color:#1a1a2e;-webkit-text-size-adjust:100%}.ctn{max-width:560px;margin:0 auto;padding:16px}.card{background:#fff;border-radius:20px;padding:24px 20px;box-shadow:0 2px 20px rgba(0,0,0,.06);margin-bottom:16px}.fade{animation:fi .3s ease}@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}button{font-family:inherit;-webkit-tap-highlight-color:transparent}.bm{display:block;width:100%;padding:16px;border:none;border-radius:14px;background:linear-gradient(135deg,#1a1a2e,#2d2d4e);color:#fff;font-size:16px;font-weight:700;cursor:pointer}.bw{display:block;width:100%;padding:15px;border:2px solid #25D366;border-radius:14px;background:#fff;color:#25D366;font-size:15px;font-weight:700;cursor:pointer;margin-top:10px}.br{display:block;width:100%;padding:15px;border:none;border-radius:14px;background:linear-gradient(135deg,#1a1a2e,#2d2d4e);color:#fff;font-size:15px;font-weight:700;cursor:pointer;margin-bottom:10px}.ob{padding:15px 16px;border:1.5px solid #e0e0e0;border-radius:14px;background:#fff;font-size:14px;color:#333;text-align:left;cursor:pointer;line-height:1.45;width:100%;transition:all .15s ease;font-family:inherit}.ob:active{border-color:#1a1a2e;background:#f5f5fa;border-width:2px}.bg{display:inline-flex;align-items:center;gap:6px;background:#f0f0f0;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:500;color:#555;margin-bottom:16px}.dc{font-size:10px;color:#bbb;text-align:center;line-height:1.5;margin-top:14px}.tr{display:flex;gap:8px;margin-bottom:14px}.tb{flex:1;padding:10px 8px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;text-align:center;transition:all .15s;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:5px}.ton{border:2px solid #1a1a2e;background:#1a1a2e;color:#fff}.tof{border:1.5px solid #ddd;background:#fff;color:#777}.bc{border-radius:16px;padding:20px;margin-bottom:14px}.ct{background:#e0e0e0;border-radius:6px;height:10px;overflow:hidden}.cf{height:100%;border-radius:6px;transition:width .8s ease}.ic{border-radius:14px;padding:16px;margin-bottom:14px;border-width:1.5px;border-style:solid}.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.gc{padding:8px 10px;background:rgba(255,255,255,.7);border-radius:10px;font-size:12px;color:#555}.bb{display:block;margin:18px auto 0;padding:10px 24px;border:none;background:transparent;color:#999;font-size:13px;cursor:pointer;font-family:inherit}.pw{display:flex;align-items:center;gap:10px;margin-bottom:20px}.pb{flex:1;background:#e8e8e8;border-radius:6px;height:7px;overflow:hidden}.pf{height:100%;border-radius:6px;background:linear-gradient(90deg,#27ae60,#2980b9,#e67e22,#c0392b);transition:width .3s ease}.gi{display:flex;gap:8px;padding:10px 12px;border-radius:10px;margin-bottom:6px;align-items:flex-start;font-size:13px;line-height:1.4;color:#333}.gg{background:#dcfce7;border:1px solid #86efac}.ga{background:#fee2e2;border:1px solid #fca5a5}.gc2{background:#e0f2fe;border:1px solid #7dd3fc;font-size:12px;color:#444;padding:8px 12px}.ft{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:14px;scrollbar-width:thin}.fb{flex-shrink:0;padding:7px 12px;border-radius:16px;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;font-family:inherit}.fon{border:2px solid #1a1a2e;background:#1a1a2e;color:#fff}.fof{border:1.5px solid #ddd;background:#fff;color:#555}.tb2{margin-top:20px;padding:14px;border-radius:12px;border:1px solid}.ec{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 14px;border-radius:14px;min-width:70}
 </style>
 </head>
 <body>
 <div class="ctn" id="app"></div>
 <script>
-const Q=[
-{cat:"Físico",icon:"🦴",q:"¿Cómo describirías mejor tu complexión corporal?",opts:[
-{t:"Proporcionado y musculoso con facilidad, incluso sin ejercicio",s:{C:3,S:1}},
-{t:"Robusto, cuadrado, huesos pesados, estructura firme",s:{S:3,C:1}},
-{t:"Redondeado, curvas suaves, articulaciones poco marcadas",s:{F:3}},
-{t:"Delgado, esbelto, se me notan las articulaciones y los huesos",s:{M:3}}]},
-{cat:"Físico",icon:"🦴",q:"¿Cómo son tus manos?",opts:[
-{t:"Medianas y fuertes, dedos proporcionados",s:{C:3}},
-{t:"Anchas, cuadradas, con dedos cortos y fuertes",s:{S:3}},
-{t:"Gorditas, suaves, como de niño pequeño",s:{F:3}},
-{t:"Largas, finas, dedos alargados y huesudos",s:{M:3}}]},
-{cat:"Físico",icon:"🦴",q:"¿Cómo reacciona tu piel al sol?",opts:[
-{t:"Se llena de pecas, se quema fácil, muchos lunares",s:{C:3}},
-{t:"Se broncea bien, piel gruesa y resistente",s:{S:3}},
-{t:"Suave, pálida, tarda en broncearse, retiene humedad",s:{F:3}},
-{t:"Seca, fina, se arruga con facilidad, sensible al frío",s:{M:3}}]},
-{cat:"Físico",icon:"🦴",q:"¿Cómo describes tu forma de engordar?",opts:[
-{t:"Tiendo a ganar músculo más que grasa",s:{C:3}},
-{t:"Engordo de forma intramuscular, me veo 'fuerte' aunque suba",s:{S:3}},
-{t:"Retengo líquidos y acumulo grasa bajo la piel, redondeándome",s:{F:3}},
-{t:"Acumulo grasa visceral (barriga) pero sigo delgado de brazos/piernas",s:{M:3}}]},
-{cat:"Físico",icon:"🦴",q:"¿Cómo es tu cabello de forma natural?",opts:[
-{t:"Fuerte, con tendencia a rojizo o castaño claro, fino pero resistente",s:{C:3}},
-{t:"Grueso, abundante, ondulado o rizado, crece rápido",s:{S:3}},
-{t:"Suave, liso, fino, tendencia a graso",s:{F:3}},
-{t:"Seco, quebradizo, con tendencia a encrespado o a caída",s:{M:3}}]},
-{cat:"Temperamento",icon:"🧠",q:"¿Cómo tomas decisiones importantes?",opts:[
-{t:"Rápido, con convicción, enfocado en el resultado",s:{C:3}},
-{t:"Con acción inmediata, resuelvo sobre la marcha",s:{S:3}},
-{t:"Escuchando a todos, buscando consenso y armonía",s:{F:3}},
-{t:"Analizo todo a fondo, necesito tiempo para reflexionar",s:{M:3}}]},
-{cat:"Temperamento",icon:"🧠",q:"En un grupo de personas, ¿qué rol ocupas naturalmente?",opts:[
-{t:"Líder: organizo, dirijo y espero resultados",s:{C:3}},
-{t:"Promotor: animo, conecto gente, pongo energía",s:{S:3}},
-{t:"Mediador: cuido que todos estén bien, evito conflictos",s:{F:3}},
-{t:"Observador: analizo desde fuera, aporto cuando tengo algo sólido",s:{M:3}}]},
-{cat:"Temperamento",icon:"🧠",q:"¿Qué te frustra más de los demás?",opts:[
-{t:"La incompetencia y la falta de compromiso",s:{C:3}},
-{t:"La lentitud y la falta de acción",s:{S:3}},
-{t:"La frialdad y la falta de empatía",s:{F:3}},
-{t:"La superficialidad y la falta de profundidad",s:{M:3}}]},
-{cat:"Temperamento",icon:"🧠",q:"¿Cómo manejas el conflicto?",opts:[
-{t:"De frente, sin rodeos, digo lo que pienso",s:{C:3}},
-{t:"Con energía, improviso y busco una salida rápida",s:{S:3}},
-{t:"Lo evito si puedo, busco la paz por encima de todo",s:{F:3}},
-{t:"Me retiro, lo proceso internamente y respondo después",s:{M:3}}]},
-{cat:"Energía",icon:"⚡",q:"¿Cuándo te sientes con más energía?",opts:[
-{t:"Cuando tengo un objetivo claro y avanzo hacia él",s:{C:3}},
-{t:"Cuando estoy rodeado de gente y hay acción",s:{S:3}},
-{t:"Cuando estoy en un ambiente tranquilo con personas queridas",s:{F:3}},
-{t:"Cuando tengo tiempo a solas para pensar o crear",s:{M:3}}]},
-{cat:"Energía",icon:"⚡",q:"¿Cómo es tu relación con el sueño?",opts:[
-{t:"Duermo poco y me levanto con energía, no necesito mucho",s:{C:3}},
-{t:"Duermo irregular pero me recupero rápido, soy adaptable",s:{S:3}},
-{t:"Me gusta dormir mucho, me cuesta arrancar por las mañanas",s:{F:3}},
-{t:"Insomnio frecuente, mente activa por la noche, sueño ligero",s:{M:3}}]},
-{cat:"Energía",icon:"⚡",q:"¿Cómo reaccionas al frío?",opts:[
-{t:"Lo tolero bien, soy más bien caluroso",s:{C:3}},
-{t:"Lo tolero, sudo fácil aunque haga frío",s:{S:3}},
-{t:"Me afecta bastante, me enfermo con facilidad",s:{F:3}},
-{t:"Me gusta el frío aunque me enfría las manos y pies",s:{M:3}}]},
-{cat:"Energía",icon:"⚡",q:"¿Cómo reaccionas físicamente al estrés?",opts:[
-{t:"Tensión muscular, mandíbula apretada, dolor de cabeza",s:{C:3}},
-{t:"Inquietud, necesito moverme, no puedo estar quieto",s:{S:3}},
-{t:"Retención de líquidos, hinchazón, cansancio profundo",s:{F:3}},
-{t:"Problemas digestivos, crujidos articulares, sequedad",s:{M:3}}]},
-{cat:"Alimentación",icon:"🍽️",q:"¿Cómo es tu apetito?",opts:[
-{t:"Como poco pero contundente, 1-2 comidas fuertes al día",s:{C:3}},
-{t:"Gran apetito, disfruto mucho comiendo, me molesta saltarme comidas",s:{S:3}},
-{t:"Como por confort emocional, la comida me calma",s:{F:3}},
-{t:"Apetito irregular, a veces se me olvida comer",s:{M:3}}]},
-{cat:"Alimentación",icon:"🍽️",q:"¿Qué tipo de problemas digestivos sueles tener?",opts:[
-{t:"Acidez, reflujo, calor estomacal",s:{C:3}},
-{t:"Pocos, mi digestión es fuerte",s:{S:3}},
-{t:"Digestión lenta, pesadez, hinchazón",s:{F:3}},
-{t:"Gastritis nerviosa, gases, intestino irritable",s:{M:3}}]},
-{cat:"Relaciones",icon:"🤝",q:"¿De qué hablas principalmente en conversación?",opts:[
-{t:"De lo que espero de las personas y de mis metas",s:{C:3}},
-{t:"De lo que está pasando ahora mismo, lo inmediato y práctico",s:{S:3}},
-{t:"De mis responsabilidades, de cuidar a los demás",s:{F:3}},
-{t:"De ideas, teorías, proyectos a largo plazo",s:{M:3}}]},
-{cat:"Relaciones",icon:"🤝",q:"¿Qué buscas en una pareja o socio?",opts:[
-{t:"Alguien que me admire y apoye mis ambiciones",s:{C:3}},
-{t:"Alguien divertido, que se adapte y viva el momento",s:{S:3}},
-{t:"Alguien que se abra emocionalmente, vulnerable y cercano",s:{F:3}},
-{t:"Alguien que me entienda sin tener que explicar todo",s:{M:3}}]},
-{cat:"Emocional",icon:"💫",q:"¿Cuál es tu 'veneno' emocional, lo que te desequilibra?",opts:[
-{t:"La ira contenida, el perfeccionismo exigente con otros",s:{C:3}},
-{t:"La impulsividad, actuar sin pensar y arrepentirme después",s:{S:3}},
-{t:"El miedo extremo, la dependencia emocional",s:{F:3}},
-{t:"La soledad, el sobreanálisis paralizante",s:{M:3}}]},
-{cat:"Emocional",icon:"💫",q:"¿Cómo es tu relación con la soledad?",opts:[
-{t:"La tolero si soy productivo, pero prefiero estar al mando de algo",s:{C:3}},
-{t:"No me gusta, necesito gente y estímulos a mi alrededor",s:{S:3}},
-{t:"Me da miedo, necesito sentirme acompañado y querido",s:{F:3}},
-{t:"La necesito, es donde recargo, pienso y creo mejor",s:{M:3}}]},
-{cat:"Entorno",icon:"🌍",q:"¿En qué tipo de clima o entorno te sientes más tú?",opts:[
-{t:"Calor seco, sol fuerte, ambientes intensos y directos",s:{C:3}},
-{t:"Clima templado y variable, ciudades activas, ambientes vivos",s:{S:3}},
-{t:"Cerca del agua, humedad, ambientes tranquilos y verdes",s:{F:3}},
-{t:"Frío, montaña, otoño, espacios silenciosos y ordenados",s:{M:3}}]},
-{cat:"Productividad",icon:"🔧",q:"¿Cómo abordas un proyecto nuevo?",opts:[
-{t:"Defino el objetivo final y voy directo, sin distraerme",s:{C:3}},
-{t:"Empiezo haciendo, ya corregiré sobre la marcha",s:{S:3}},
-{t:"Consulto con otros, busco apoyo y me aseguro de que todos estén alineados",s:{F:3}},
-{t:"Investigo a fondo, planeo cada detalle antes de mover una pieza",s:{M:3}}]}
-];
+var Q=[{c:"Físico",i:"🦴",q:"¿Cómo describirías mejor tu complexión corporal?",o:[{t:"Proporcionado y musculoso con facilidad, incluso sin ejercicio",s:{C:3,S:1}},{t:"Robusto, cuadrado, huesos pesados, estructura firme",s:{S:3,C:1}},{t:"Redondeado, curvas suaves, articulaciones poco marcadas",s:{F:3}},{t:"Delgado, esbelto, se me notan las articulaciones y los huesos",s:{M:3}}]},{c:"Físico",i:"🦴",q:"¿Cómo son tus manos?",o:[{t:"Medianas y fuertes, dedos proporcionados",s:{C:3}},{t:"Anchas, cuadradas, con dedos cortos y fuertes",s:{S:3}},{t:"Gorditas, suaves, como de niño pequeño",s:{F:3}},{t:"Largas, finas, dedos alargados y huesudos",s:{M:3}}]},{c:"Físico",i:"🦴",q:"¿Cómo reacciona tu piel al sol?",o:[{t:"Se llena de pecas, se quema fácil, muchos lunares",s:{C:3}},{t:"Se broncea bien, piel gruesa y resistente",s:{S:3}},{t:"Suave, pálida, tarda en broncearse, retiene humedad",s:{F:3}},{t:"Seca, fina, se arruga con facilidad, sensible al frío",s:{M:3}}]},{c:"Físico",i:"🦴",q:"¿Cómo describes tu forma de engordar?",o:[{t:"Tiendo a ganar músculo más que grasa",s:{C:3}},{t:"Engordo intramuscular, me veo fuerte aunque suba",s:{S:3}},{t:"Retengo líquidos y acumulo grasa bajo la piel",s:{F:3}},{t:"Acumulo grasa visceral (barriga) pero sigo delgado de extremidades",s:{M:3}}]},{c:"Físico",i:"🦴",q:"¿Cómo es tu cabello de forma natural?",o:[{t:"Fuerte, tendencia a rojizo o castaño claro, fino pero resistente",s:{C:3}},{t:"Grueso, abundante, ondulado o rizado, crece rápido",s:{S:3}},{t:"Suave, liso, fino, tendencia a graso",s:{F:3}},{t:"Seco, quebradizo, tendencia a encrespado o caída",s:{M:3}}]},{c:"Temperamento",i:"🧠",q:"¿Cómo tomas decisiones importantes?",o:[{t:"Rápido, con convicción, enfocado en el resultado",s:{C:3}},{t:"Con acción inmediata, resuelvo sobre la marcha",s:{S:3}},{t:"Escuchando a todos, buscando consenso y armonía",s:{F:3}},{t:"Analizo todo a fondo, necesito tiempo para reflexionar",s:{M:3}}]},{c:"Temperamento",i:"🧠",q:"En un grupo, ¿qué rol ocupas naturalmente?",o:[{t:"Líder: organizo, dirijo y espero resultados",s:{C:3}},{t:"Promotor: animo, conecto gente, pongo energía",s:{S:3}},{t:"Mediador: cuido que todos estén bien, evito conflictos",s:{F:3}},{t:"Observador: analizo desde fuera, aporto cuando tengo algo sólido",s:{M:3}}]},{c:"Temperamento",i:"🧠",q:"¿Qué te frustra más de los demás?",o:[{t:"La incompetencia y la falta de compromiso",s:{C:3}},{t:"La lentitud y la falta de acción",s:{S:3}},{t:"La frialdad y la falta de empatía",s:{F:3}},{t:"La superficialidad y la falta de profundidad",s:{M:3}}]},{c:"Temperamento",i:"🧠",q:"¿Cómo manejas el conflicto?",o:[{t:"De frente, sin rodeos, digo lo que pienso",s:{C:3}},{t:"Con energía, improviso y busco una salida rápida",s:{S:3}},{t:"Lo evito si puedo, busco la paz por encima de todo",s:{F:3}},{t:"Me retiro, lo proceso internamente y respondo después",s:{M:3}}]},{c:"Energía",i:"⚡",q:"¿Cuándo te sientes con más energía?",o:[{t:"Cuando tengo un objetivo claro y avanzo hacia él",s:{C:3}},{t:"Cuando estoy rodeado de gente y hay acción",s:{S:3}},{t:"Cuando estoy en un ambiente tranquilo con personas queridas",s:{F:3}},{t:"Cuando tengo tiempo a solas para pensar o crear",s:{M:3}}]},{c:"Energía",i:"⚡",q:"¿Cómo es tu relación con el sueño?",o:[{t:"Duermo poco y me levanto con energía",s:{C:3}},{t:"Duermo irregular pero me recupero rápido",s:{S:3}},{t:"Me gusta dormir mucho, me cuesta arrancar",s:{F:3}},{t:"Insomnio frecuente, mente activa por la noche",s:{M:3}}]},{c:"Energía",i:"⚡",q:"¿Cómo reaccionas al frío?",o:[{t:"Lo tolero bien, soy más bien caluroso",s:{C:3}},{t:"Lo tolero, sudo fácil aunque haga frío",s:{S:3}},{t:"Me afecta bastante, me enfermo con facilidad",s:{F:3}},{t:"Me gusta el frío aunque me enfría manos y pies",s:{M:3}}]},{c:"Energía",i:"⚡",q:"¿Cómo reaccionas físicamente al estrés?",o:[{t:"Tensión muscular, mandíbula apretada, dolor de cabeza",s:{C:3}},{t:"Inquietud, necesito moverme, no puedo estar quieto",s:{S:3}},{t:"Retención de líquidos, hinchazón, cansancio profundo",s:{F:3}},{t:"Problemas digestivos, crujidos articulares, sequedad",s:{M:3}}]},{c:"Alimentación",i:"🍽️",q:"¿Cómo es tu apetito?",o:[{t:"Como poco pero contundente, 1-2 comidas fuertes al día",s:{C:3}},{t:"Gran apetito, disfruto mucho comiendo",s:{S:3}},{t:"Como por confort emocional, la comida me calma",s:{F:3}},{t:"Apetito irregular, a veces se me olvida comer",s:{M:3}}]},{c:"Alimentación",i:"🍽️",q:"¿Qué problemas digestivos sueles tener?",o:[{t:"Acidez, reflujo, calor estomacal",s:{C:3}},{t:"Pocos, mi digestión es fuerte",s:{S:3}},{t:"Digestión lenta, pesadez, hinchazón",s:{F:3}},{t:"Gastritis nerviosa, gases, intestino irritable",s:{M:3}}]},{c:"Relaciones",i:"🤝",q:"¿De qué hablas principalmente en conversación?",o:[{t:"De lo que espero de las personas y de mis metas",s:{C:3}},{t:"De lo que está pasando ahora mismo",s:{S:3}},{t:"De mis responsabilidades, de cuidar a los demás",s:{F:3}},{t:"De ideas, teorías, proyectos a largo plazo",s:{M:3}}]},{c:"Relaciones",i:"🤝",q:"¿Qué buscas en una pareja o socio?",o:[{t:"Alguien que me admire y apoye mis ambiciones",s:{C:3}},{t:"Alguien divertido, que se adapte y viva el momento",s:{S:3}},{t:"Alguien que se abra emocionalmente, cercano",s:{F:3}},{t:"Alguien que me entienda sin tener que explicar todo",s:{M:3}}]},{c:"Emocional",i:"💫",q:"¿Cuál es tu veneno emocional?",o:[{t:"La ira contenida, el perfeccionismo exigente",s:{C:3}},{t:"La impulsividad, actuar sin pensar",s:{S:3}},{t:"El miedo extremo, la dependencia emocional",s:{F:3}},{t:"La soledad, el sobreanálisis paralizante",s:{M:3}}]},{c:"Emocional",i:"💫",q:"¿Cómo es tu relación con la soledad?",o:[{t:"La tolero si soy productivo",s:{C:3}},{t:"No me gusta, necesito gente y estímulos",s:{S:3}},{t:"Me da miedo, necesito sentirme acompañado",s:{F:3}},{t:"La necesito, es donde recargo y creo mejor",s:{M:3}}]},{c:"Entorno",i:"🌍",q:"¿En qué clima o entorno te sientes más tú?",o:[{t:"Calor seco, sol fuerte, ambientes intensos",s:{C:3}},{t:"Clima templado, ciudades activas, ambientes vivos",s:{S:3}},{t:"Cerca del agua, humedad, ambientes tranquilos",s:{F:3}},{t:"Frío, montaña, otoño, espacios silenciosos",s:{M:3}}]},{c:"Productividad",i:"🔧",q:"¿Cómo abordas un proyecto nuevo?",o:[{t:"Defino el objetivo y voy directo",s:{C:3}},{t:"Empiezo haciendo, ya corregiré sobre la marcha",s:{S:3}},{t:"Consulto con otros, busco apoyo y consenso",s:{F:3}},{t:"Investigo a fondo antes de mover una pieza",s:{M:3}}]}];
+var B={C:{n:"Colérico",e:"🔥",en:"Fuego",ey:"Caliente y seco",se:"Verano",co:"#c0392b",bg:"#fdecea",de:"Líder nato, enfocado en resultados, racional e impulsivo. Cuerpo proporcionado y musculoso.",st:"Determinación, claridad, capacidad ejecutiva, independencia.",sh:"Ira contenida, impaciencia, exigencia excesiva.",pa:"Flemático 💧"},S:{n:"Sanguíneo",e:"🌬️",en:"Aire",ey:"Caliente y húmedo",se:"Primavera",co:"#e67e22",bg:"#fef5e7",de:"Promotor carismático, sociable, hedonista, orientado a la acción inmediata. Cuerpo robusto.",st:"Carisma, adaptabilidad, energía social, capacidad de disfrute.",sh:"Impulsividad, falta de profundidad, dificultad para estar solo.",pa:"Melancólico 🌿"},F:{n:"Flemático",e:"💧",en:"Agua",ey:"Frío y húmedo",se:"Invierno",co:"#2980b9",bg:"#ebf5fb",de:"Empático, compasivo, emocional, mediador nato. Cuerpo redondeado y suave. Gran constancia.",st:"Empatía profunda, constancia, lealtad, capacidad de escucha.",sh:"Miedo al abandono, evitación de conflictos, dependencia emocional.",pa:"Colérico 🔥"},M:{n:"Melancólico",e:"🌿",en:"Tierra",ey:"Frío y seco",se:"Otoño",co:"#27ae60",bg:"#eafaf1",de:"Intelectual, analítico, perfeccionista, introvertido y creativo. Cuerpo delgado y huesudo.",st:"Análisis, creatividad, profundidad, visión a largo plazo.",sh:"Sobreanálisis paralizante, aislamiento, autocrítica excesiva.",pa:"Sanguíneo 🌬️"}};
+var FC={C:[{c:"🥩 Proteínas",g:["Pescado blanco y azul","Pollo y pavo a la plancha","Huevos cocidos o en tortilla"],a:["Carnes rojas en exceso","Embutidos y procesados","Vísceras (muy calientes)"]},{c:"🥬 Verduras",g:["Ensaladas frescas (pepino, lechuga, tomate)","Verduras crudas y jugosas","Calabacín, apio, espinacas frescas"],a:["Verduras muy especiadas","Exceso de ajo y cebolla crudos"]},{c:"🌾 Cereales",g:["Cereales integrales (arroz, avena, quinoa)","Pan integral con moderación"],a:["Harinas refinadas","Bollería industrial"]},{c:"🫒 Grasas",g:["Aceite de oliva virgen extra","Aguacate","Frutos secos (nueces, almendras)"],a:["Frituras y aceites refinados","Grasas saturadas en exceso"]},{c:"🍎 Frutas",g:["Sandía, melón, uva (jugosas y frescas)","Pera, manzana","Cítricos moderados"],a:["Frutas muy ácidas en exceso"]},{c:"🌶️ Especias",g:["Menta, hierbabuena (refrescan)","Cúrcuma (antiinflamatoria)","Cilantro, perejil"],a:["Pimienta fuerte, chili extremo","Jengibre en exceso","Mostaza fuerte"]},{c:"🍵 Bebidas",g:["Agua con limón en abundancia","Infusiones frescas (menta, hierbabuena)","Agua de coco"],a:["Café en exceso","Alcohol fuerte","Bebidas muy calientes"]},{c:"⏰ Hábitos",g:["2-3 comidas equilibradas al día","Alimentos frescos y a temperatura ambiente","Cenar ligero y temprano"],a:["Comer rápido y sin masticar","Comidas muy calientes y pesadas","Saltarse comidas y atracones"]}],S:[{c:"🥩 Proteínas",g:["Carne (ternera, pollo, pavo) — no vegetariano","Pescado azul (salmón, sardina, caballa)","Huevos en cualquier preparación"],a:["Cerdo","Mariscos","Embutidos procesados"]},{c:"🥬 Verduras",g:["Verduras verdes cocidas (brócoli, judías verdes)","Sopas y cremas de verduras","Calabacín, zanahoria cocida"],a:["Ensaladas crudas muy grandes","Leguminosas (garbanzos, lentejas — gases)"]},{c:"🌾 Cereales",g:["Cereales integrales (arroz integral, quinoa, avena)","Patata y boniato cocidos"],a:["Harinas refinadas y pan blanco","Bollería industrial y azúcar refinado"]},{c:"🫒 Grasas",g:["Aceite de oliva virgen extra (fundamental)","Aguacate","Frutos secos con moderación"],a:["Aceites refinados (girasol, soja)","Grasas trans y procesadas"]},{c:"🍎 Frutas",g:["Cítricos (limón, naranja, pomelo)","Kiwi, piña (ácidas y depurativas)","Frutas de temporada a mediodía","Germinados de cualquier tipo"],a:["Fruta muy fría de nevera","Zumos industriales con azúcar"]},{c:"🌶️ Especias",g:["Cúrcuma + pimienta negra (antiinflamatorio)","Jengibre moderado (digestivo)","Comino e hinojo (anti-gases)","Canela (caliente sin agredir)"],a:["Picante extremo"]},{c:"🍵 Bebidas",g:["Agua con limón (1-2 litros/día)","Infusiones de hinojo, anís o jengibre post-comida","Agua con miel","Caldos caseros calientes"],a:["Agua muy fría durante comidas","Alcohol de mala calidad","Refrescos azucarados"]},{c:"⏰ Hábitos",g:["Varias comidas pequeñas al día","Comida siempre caliente o templada","Masticar despacio","Infusión digestiva después de comer","Sauna o vapor 2-3 veces/semana"],a:["Comer cantidades grandes de golpe","Picar sin estructura","Beber mucha agua fría con las comidas"]}],F:[{c:"🥩 Proteínas",g:["Pollo, pavo, ternera magra","Pescado azul (salmón, sardina)","Huevos cocidos o en tortilla"],a:["Cerdo","Carnes muy grasas","Embutidos"]},{c:"🥬 Verduras",g:["Verduras cocidas CON especias (ajo, jengibre)","Sopas y caldos calientes especiados","Ajo, cebolla, puerro (calientes naturales)"],a:["Ensaladas crudas y frías","Verduras sin especiar","Leguminosas en exceso"]},{c:"🌾 Cereales",g:["Avena cocida con canela (desayuno ideal)","Quinoa, mijo, arroz integral con moderación"],a:["Pan blanco y harinas refinadas","Pasta en exceso","Bollería y dulces (el dulce es tu PEOR enemigo)"]},{c:"🫒 Grasas",g:["Aceite de oliva virgen extra","Aguacate (combinar con especias calientes)"],a:["Mantequilla y nata en exceso","Aceites refinados","Grasas saturadas"]},{c:"🍎 Frutas",g:["Cítricos (limón, pomelo, naranja — agrios)","Kiwi, piña, frutos rojos (ácidos)","Manzana y pera cocidas con canela"],a:["Frutas muy dulces (plátano maduro, mango, uva)","Fruta después de las 14h","Fruta fría de nevera"]},{c:"🥛 Lácteos",g:["Leche de cabra u oveja (poca, si acaso)","Queso curado en cantidad mínima"],a:["Leche de vaca (aumenta mucosidad)","Yogur frío","Queso fresco en cantidad","Helados (frío+dulce+lácteo = triple enemigo)"]},{c:"🌶️ Especias",g:["Jengibre (TU MEDICINA — a diario)","Canela (calienta y endulza sin azúcar)","Pimienta negra (activadora metabólica)","Ajo crudo o cocido","Mostaza, cúrcuma, comino"],a:["Sal en exceso (retiene líquidos)"]},{c:"🍵 Bebidas",g:["Infusiones de jengibre (varias al día)","Agua caliente con limón por la mañana","Caldos caseros con especias","Té verde caliente"],a:["Bebidas frías y refrescos","Agua en exceso (flemático debe moderar)","Bebidas dulces y zumos industriales"]},{c:"⏰ Hábitos",g:["Comer poco, muchas veces al día","NO saltarse el desayuno","TODO siempre caliente y especiado","Sauna o vapor frecuente","Suplementos: sales de Schüssler, algas kelp"],a:["Cenas copiosas y tardías","Comer por confort emocional (tu trampa)","Dormir más de 8 horas"]}],M:[{c:"🥩 Proteínas",g:["Carne (ternera, cordero) — imprescindible, no vegetariano","Pescado azul (salmón, sardina, caballa — omega-3)","Pescado blanco para cenas","Huevos cocidos o en tortilla"],a:["Cerdo","Mariscos","Carnes procesadas"]},{c:"🥬 Verduras",g:["Verduras SIEMPRE cocidas (calabacín, zanahoria, calabaza)","Sopas y cremas calientes","Brócoli, judías verdes — cocidos","Germinados de cualquier tipo"],a:["Ensaladas crudas grandes","Leguminosas (lentejas, garbanzos — fuente de gases)","Verduras crudas frías"]},{c:"🌾 Cereales",g:["Cereales integrales (arroz integral, avena, quinoa)","Patata y boniato cocidos","Pan integral tostado con moderación"],a:["Harinas refinadas y pan blanco","Bollería industrial"]},{c:"🫒 Grasas",g:["Aceite de oliva virgen extra (FUNDAMENTAL)","Aguacate (grasa + hidratación)","Frutos secos con moderación"],a:["Aceites refinados (girasol, soja)","Grasas trans y procesadas"]},{c:"🍎 Frutas",g:["Frutas de temporada a mediodía","Cítricos (limón en agua tibia)","Germinados"],a:["Fruta muy fría de nevera","Frutas en exceso por la noche"]},{c:"🌶️ Especias",g:["Comino e hinojo (ANTI-GASES — tus aliados)","Cúrcuma + pimienta negra (antiinflamatorio)","Jengibre suave (activa digestión)","Canela (calienta y dulcifica)","Anís (carminativo natural)"],a:["Picante extremo (estómago sensible)"]},{c:"🍵 Bebidas",g:["Infusiones calientes post-comida (hinojo, anís, jengibre)","Agua con miel (casi medicinal para ti)","Agua con limón tibia","Caldos caseros"],a:["Agua muy fría durante comidas","Alcohol","Refrescos y bebidas industriales"]},{c:"⏰ Hábitos",g:["Varias comidas pequeñas","TODO caliente y cocido — nunca frío ni crudo","Masticar mucho y despacio","Dormir mínimo 8 horas + siestas","Masajes frecuentes"],a:["Comidas grandes de golpe","Comer crudo y frío","Saltarse comidas"]}]};
+var EX={C:{id:["Natación — enfría y relaja sin impacto","Yoga restaurativo o Yin Yoga","Caminatas tranquilas en naturaleza","Tai Chi o Qi Gong","Estiramientos profundos y prolongados","Pilates suave"],co:["Ciclismo a ritmo suave","Senderismo sin desnivel agresivo","Deportes acuáticos"],av:["CrossFit, HIIT o entrenamientos explosivos","Deportes muy competitivos","Ejercicio bajo sol fuerte","Sesiones largas de alta intensidad","Correr largas distancias en calor"],ti:"Aunque tu cuerpo parece hecho para la intensidad, tu exceso de calor interno hace que machacar te sobrecaliente. Tu ejercicio ideal te enfría, te relaja y te estira.",cm:"Masajes relajantes post-ejercicio. Estiramientos largos (mín. 15 min). Ducha fresca para bajar temperatura."},S:{id:["Sauna y baños de vapor (8-12 veces/mes)","Artes marciales (jiu jitsu, judo, karate)","Deportes de equipo (fútbol, baloncesto, pádel)","Natación — sudas sin darte cuenta","Ciclismo a ritmo medio-alto","Baile y actividades rítmicas"],co:["Senderismo con desnivel moderado","Yoga dinámico (Vinyasa)","Running moderado"],av:["Sedentarismo total","Ejercicio solitario sin componente social","Actividad sin sudoración","Gimnasio solo sin compañía"],ti:"Tu clave absoluta es SUDAR. La sauna no es un lujo, es tu medicina. Los deportes sociales te motivan más que el gym solo — necesitas gente, competición sana y diversión.",cm:"Sauna o baño de vapor 2-3 veces/semana, idealmente después del ejercicio. Hidratación con limón y minerales."},F:{id:["Baile (salsa, bachata, zumba — activa y calienta)","Caminatas enérgicas y rápidas","Yoga dinámico (Vinyasa, Ashtanga, Bikram)","Ciclismo activo con ritmo","Deportes de equipo","Natación con ritmo constante"],co:["Running suave","Clases grupales de fitness","Artes marciales suaves"],av:["Sedentarismo (tu MAYOR enemigo)","Dormir demasiado en vez de moverse","Yoga muy lento sin activación","Ejercicio sin calentamiento corporal"],ti:"Tu naturaleza tiende a la inercia — si te paras, te cuesta arrancar. El ejercicio debe CALENTARTE y ACTIVARTE, no relajarte. El baile es perfecto para ti.",cm:"Cualquier actividad que suba tu temperatura. No te permitas más de un día de descanso seguido."},M:{id:["Tai Chi o Aikido (fluidos, articulares)","Natación suave (bajo impacto, fluido)","Caminatas en montaña a ritmo tranquilo","Yoga Hatha o restaurativo","Estiramientos y movilidad articular","Jiu jitsu (técnico, como ajedrez corporal)"],co:["Pilates","Ciclismo suave","Escalada (técnica, concentración)"],av:["CrossFit, HIIT agresivo","Correr en asfalto (alto impacto articular)","Deportes de explosividad sin calentamiento","Ejercicio excesivo que deshidrate","Pesas muy pesadas sin guía"],ti:"Tus articulaciones son tu punto débil — crujen, se secan, se resienten. Todo tu ejercicio debe ser FLUIDO: movimiento que lubrique sin machacar.",cm:"Masajes frecuentes (mín. 2/mes). Estiramientos largos pre y post. Hidratación extra."}};
+var FT={C:"Enfría tu comida: fresco, crudo, jugoso. El sabor amargo te equilibra.",S:"Ácido y agrio. Limón en todo. Suda más, come menos de golpe. Cocido > crudo.",F:"Especiar TODO, calentar TODO. Nunca dulce, nunca frío. Poco y muchas veces.",M:"Cocido > crudo. Poco > mucho. Caliente > frío. Aceites buenos siempre."};
+var FP={C:"Tu cuerpo ya es caliente — necesitas enfriar. Alimentos frescos, crudos y jugosos. El sabor amargo te equilibra.",S:"Necesitas eliminar humedad. Sabores agrios y ácidos. Limón en todo. Suda más, come menos de golpe.",F:"TODO caliente, TODO especiado. El dulce es tu mayor trampa. Come poco pero muchas veces. El jengibre es tu medicina.",M:"Tu cuerpo es frío y seco — necesitas calor y aceites buenos. Come varias veces, siempre caliente y cocido."};
 
-const B={
-C:{name:"Colérico",el:"🔥",elN:"Fuego",energy:"Caliente y seco",season:"Verano",color:"#c0392b",bg:"#fdecea",
-desc:"Líder nato, enfocado en resultados, racional e impulsivo. Cuerpo proporcionado y musculoso. Propenso al sobrecalentamiento.",
-str:"Determinación, claridad, capacidad ejecutiva, independencia.",
-shadow:"Ira contenida, impaciencia, exigencia excesiva con los demás."},
-S:{name:"Sanguíneo",el:"🌬️",elN:"Aire",energy:"Caliente y húmedo",season:"Primavera",color:"#e67e22",bg:"#fef5e7",
-desc:"Promotor carismático, sociable, hedonista, orientado a la acción inmediata. Cuerpo robusto y cuadrado.",
-str:"Carisma, adaptabilidad, energía social, capacidad de disfrute.",
-shadow:"Impulsividad, falta de profundidad, dificultad para estar solo."},
-F:{name:"Flemático",el:"💧",elN:"Agua",energy:"Frío y húmedo",season:"Invierno",color:"#2980b9",bg:"#ebf5fb",
-desc:"Empático, compasivo, emocional, mediador nato. Cuerpo redondeado y suave. Gran lealtad y constancia.",
-str:"Empatía profunda, constancia, lealtad, capacidad de escucha.",
-shadow:"Miedo al abandono, evitación de conflictos, dependencia emocional."},
-M:{name:"Melancólico",el:"🌿",elN:"Tierra",energy:"Frío y seco",season:"Otoño",color:"#27ae60",bg:"#eafaf1",
-desc:"Intelectual, analítico, perfeccionista, introvertido y creativo. Cuerpo delgado y huesudo. Profundidad emocional.",
-str:"Análisis, creatividad, profundidad, visión a largo plazo.",
-shadow:"Sobreanálisis paralizante, aislamiento, autocrítica excesiva."}
-};
+var ST={scr:"start",cQ:0,ans:{},tab:"resultado",fc:0};
+function calc(){var t={C:0,S:0,F:0,M:0};Object.values(ST.ans).forEach(function(s){Object.entries(s).forEach(function(e){t[e[0]]+=e[1]})});var total=Object.values(t).reduce(function(a,b){return a+b},0)||1;var sorted=Object.entries(t).sort(function(a,b){return b[1]-a[1]});var p=sorted[0],s=sorted[1];return{t:t,total:total,sorted:sorted,p:p,s:s,fus:s[1]>=p[1]*.6,opp:p[0]==="C"?"F":p[0]==="F"?"C":p[0]==="S"?"M":"S"}}
+function render(){var a=document.getElementById("app");if(ST.scr==="start")rStart(a);else if(ST.scr==="quiz")rQuiz(a);else rRes(a)}
 
-const FOOD={
-C:{good:["Verduras crudas y frescas (ensaladas, pepino)","Frutas frescas y jugosas (sandía, melón, uva)","Pescado blanco y azul","Cereales integrales","Aceite de oliva virgen extra","Infusiones frescas (menta, hierbabuena)","Agua con limón en abundancia"],
-avoid:["Carnes rojas en exceso","Alcohol fuerte","Picante extremo","Frituras y grasas saturadas","Café en exceso","Especias muy calientes (pimienta, chili)"],
-tip:"Tu cuerpo ya es caliente — necesitas enfriar. Prioriza alimentos frescos, crudos y jugosos. El sabor amargo te equilibra.",
-rule:"Enfría tu comida: fresco, crudo, jugoso. El sabor amargo te equilibra."},
-S:{good:["Carne y pescado (no ser vegetariano)","Frutas ácidas (cítricos, kiwi, piña)","Verduras verdes cocidas","Agua con limón (1-2 litros/día)","Especias moderadas (cúrcuma, jengibre)","Cereales integrales","Aceite de oliva virgen extra"],
-avoid:["Bollería y azúcar refinado","Mariscos","Cerdo","Aceites refinados","Alcohol de mala calidad","Exceso de lácteos","Comidas muy copiosas de golpe"],
-tip:"Necesitas sudar y eliminar humedad. Saunas frecuentes. Come sabores agrios y ácidos. El limón es tu mejor aliado.",
-rule:"Ácido y agrio. Limón en todo. Suda más, come menos de golpe."},
-F:{good:["Especias calientes (jengibre, canela, pimienta, ajo)","Verduras cocidas y especiadas","Sopas y caldos calientes","Carne magra (pollo, pavo, ternera)","Pescado azul","Cítricos y frutas ácidas","Infusiones de jengibre"],
-avoid:["Lácteos (especialmente leche de vaca)","Dulces y azúcar (tu peor enemigo)","Comida fría o de nevera","Harinas refinadas y pan blanco","Frutas muy dulces (plátano maduro, mango)","Helados","Cenas copiosas y tardías"],
-tip:"TODO caliente, TODO especiado. El dulce es tu mayor trampa. Come poco pero muchas veces. No te saltes el desayuno. El jengibre es tu medicina.",
-rule:"Especiar TODO, calentar TODO. Nunca dulce, nunca frío."},
-M:{good:["Aceites de calidad (oliva, aguacate)","Carne y pescado (no ser vegetariano)","Verduras siempre cocidas, nunca crudas","Miel (casi medicinal para ti)","Cereales integrales","Frutas de temporada","Infusiones calientes (hinojo, anís, jengibre)"],
-avoid:["Leguminosas (lentejas, garbanzos — te generan gases)","Ensaladas crudas y frías","Agua fría durante las comidas","Alimentos procesados y refinados","Cerdo","Comidas grandes de golpe"],
-tip:"Tu cuerpo es frío y seco — necesitas calor y aceites buenos. Come varias veces al día en poca cantidad, siempre caliente y cocido. El comino y el hinojo son tus aliados contra los gases.",
-rule:"Cocido > crudo. Poco > mucho. Caliente > frío. Aceites buenos siempre."}
-};
+function rStart(a){a.innerHTML='<div class="card fade" style="text-align:center"><div style="font-size:56px;margin-bottom:8px">🧬</div><h1 style="font-size:24px;font-weight:800;margin-bottom:4px;letter-spacing:-.5px">Test de Biotipos Unani</h1><p style="color:#e67e22;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px">Medicina Tradicional · Autoconocimiento</p><div style="background:#faf8f5;border-radius:16px;padding:20px;margin-bottom:20px;border:1px solid #e8e0d8;text-align:left"><h2 style="font-size:16px;font-weight:700;margin-bottom:10px">¿Qué son los biotipos?</h2><p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:12px">Hace más de 2.000 años, <strong>Hipócrates</strong> observó que las personas no enferman ni reaccionan igual. A partir de ahí nació una clasificación que la <strong>medicina grecoislámica (Unani)</strong> perfeccionó durante siglos: los <strong>cuatro temperamentos</strong>.</p><p style="font-size:13px;color:#555;line-height:1.7;margin-bottom:12px">Cada biotipo está asociado a un <strong>elemento</strong> (fuego, aire, agua, tierra), una <strong>cualidad energética</strong> (caliente/frío, seco/húmedo) y una <strong>estación del año</strong>. Esto no solo define tu personalidad — también influye en qué alimentos te sientan mejor, qué tipo de ejercicio te conviene y cómo te relacionas.</p><p style="font-size:13px;color:#555;line-height:1.7;margin:0">Esta tradición milenaria, que conecta a Hipócrates con Galeno y la medicina Unani, sigue viva hoy como herramienta de autoconocimiento y desarrollo personal.</p></div><div style="display:flex;justify-content:center;gap:10px;margin:20px 0;flex-wrap:wrap">'+Object.entries(B).map(function(e){var b=e[1];return'<div class="ec" style="background:'+b.bg+';border:1px solid '+b.co+'22"><span style="font-size:28px">'+b.e+'</span><span style="font-size:11px;font-weight:700;color:'+b.co+'">'+b.n+'</span><span style="font-size:10px;color:#999">'+b.en+' · '+b.se+'</span></div>'}).join('')+'</div><div style="background:#f0f8ff;border-radius:14px;padding:16px;margin-bottom:20px;border:1px solid #c8dfe8;text-align:left"><h3 style="font-size:14px;font-weight:700;color:#2c5282;margin-bottom:10px">¿Qué descubrirás?</h3><div style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:18px;flex-shrink:0;margin-top:2px">🎯</span><div><span style="font-size:13px;font-weight:600">Tu biotipo dominante y secundario</span><br><span style="font-size:12px;color:#888">Con porcentajes y detección de fusiones</span></div></div><div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:18px;flex-shrink:0;margin-top:2px">🥗</span><div><span style="font-size:13px;font-weight:600">Plan de alimentación completo</span><br><span style="font-size:12px;color:#888">Alimentos recomendados y a evitar por categoría</span></div></div><div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:18px;flex-shrink:0;margin-top:2px">🏃</span><div><span style="font-size:13px;font-weight:600">Ejercicio personalizado</span><br><span style="font-size:12px;color:#888">Actividades ideales según tu constitución</span></div></div><div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:18px;flex-shrink:0;margin-top:2px">🧭</span><div><span style="font-size:13px;font-weight:600">Tu camino de crecimiento</span><br><span style="font-size:12px;color:#888">Qué fortalezas desarrollar para equilibrarte</span></div></div></div></div><p style="font-size:13px;color:#888;margin-bottom:12px">📋 20 preguntas · ⏱️ 5 minutos</p><button class="bm" onclick="go()">Empezar el test</button><div style="margin-top:20px;padding:14px;background:#f8f8f8;border-radius:12px;border:1px solid #e8e8e8"><p style="font-size:11px;color:#999;line-height:1.6;text-align:center;margin:0">⚕️ <strong>Aviso:</strong> Este test es una herramienta de autoconocimiento basada en la tradición milenaria de la medicina Unani. Tiene carácter orientativo y educativo — <strong>no sustituye el diagnóstico ni el consejo de profesionales de la salud</strong>. Consulta con un médico, nutricionista o terapeuta cualificado para decisiones sobre tu bienestar.</p></div></div>'}
 
-const EXER={
-C:{good:["Natación (enfría y relaja)","Yoga suave o restaurativo","Caminatas tranquilas en naturaleza","Masajes frecuentes","Tai Chi o Qi Gong","Estiramientos profundos"],
-avoid:["CrossFit o HIIT extremo","Deportes muy competitivos","Ejercicio bajo sol fuerte","Sesiones largas de alta intensidad"],
-tip:"Aunque te sientes hecho para el gimnasio, tu exceso de calor hace que la alta intensidad te sobrecaliente. Necesitas actividades que te enfríen y relajen.",
-comp:"Masajes y estiramientos post-ejercicio. Enfriar el cuerpo después de la actividad."},
-S:{good:["Saunas y baños de vapor (8-12/mes)","Deportes sociales y de equipo","Actividad moderada con buena sudoración","Natación","Ciclismo a ritmo medio","Artes marciales (jiu jitsu, judo)","Baile y actividades rítmicas"],
-avoid:["Sedentarismo total","Deportes solitarios sin componente social","Ejercicio sin sudoración"],
-tip:"Tu clave es sudar. La sauna es casi obligatoria. Los deportes sociales te motivan más que el gym solo. Busca actividad donde transpires y compartas.",
-comp:"Sauna o baño de vapor 2-3 veces por semana después del ejercicio. Tu parte sanguínea necesita sudar."},
-F:{good:["Baile (activa, calienta, socializa)","Caminatas enérgicas","Yoga dinámico (Vinyasa, Ashtanga)","Ciclismo activo","Deportes de equipo","Natación con ritmo","Cualquier actividad que suba la temperatura corporal"],
-avoid:["Sedentarismo (tu mayor enemigo)","Dormir demasiado en vez de moverse","Ejercicio muy lento sin activación"],
-tip:"Necesitas MOVERTE. Tu naturaleza tiende a la inercia — el ejercicio debe calentarte y activarte. Cuanto más dinámico, mejor. El baile es perfecto para ti.",
-comp:"Cualquier actividad que te suba la temperatura corporal. No te permitas la inercia."},
-M:{good:["Tai Chi o Aikido","Natación suave","Caminatas en montaña a ritmo tranquilo","Yoga (Hatha, restaurativo)","Masajes frecuentes","Estiramientos y movilidad articular","Jiu jitsu (técnico, como ajedrez corporal)"],
-avoid:["CrossFit o HIIT agresivo","Correr en asfalto (alto impacto articular)","Deportes de explosividad sin calentamiento largo","Ejercicio excesivo que deshidrate"],
-tip:"Tus articulaciones son tu punto débil — necesitas movimiento fluido que lubrique sin machacar. Ejercicio suave pero constante. El Tai Chi y la natación son tu territorio natural.",
-comp:"Masajes frecuentes y estiramientos largos. Tus articulaciones necesitan cuidado extra."}
-};
+function rQuiz(a){var q=Q[ST.cQ];var pct=((ST.cQ)/Q.length)*100;a.innerHTML='<div class="card fade"><div class="pw"><div class="pb"><div class="pf" style="width:'+pct+'%"></div></div><span style="font-size:13px;color:#888;min-width:48px;text-align:right;font-weight:600">'+(ST.cQ+1)+'/'+Q.length+'</span></div><div class="bg">'+q.i+' '+q.c+'</div><h2 style="font-size:18px;font-weight:700;line-height:1.4;margin-bottom:20px">'+q.q+'</h2><div style="display:flex;flex-direction:column;gap:10px">'+q.o.map(function(o,i){return'<button class="ob" onclick="ans('+i+')">'+o.t+'</button>'}).join('')+'</div>'+(ST.cQ>0?'<button class="bb" onclick="bk()">← Anterior</button>':'')+'</div>'}
 
-let S={scr:"start",cQ:0,ans:{},tab:"resultado"};
+function rRes(a){var r=calc();var pk=r.p[0],sk=r.s[0],ok=r.opp;var p=B[pk],s=B[sk],o=B[ok];var fd=FC[pk],fdS=r.fus?FC[sk]:null;var ed=EX[pk],edS=r.fus?EX[sk]:null;var cc=fd[ST.fc];
+var h='<div class="fade"><div class="tr"><button class="tb '+(ST.tab==="resultado"?"ton":"tof")+'" onclick="st(\'resultado\')">📊 Resultado</button><button class="tb '+(ST.tab==="alimentacion"?"ton":"tof")+'" onclick="st(\'alimentacion\')">🥗 Alimentación</button><button class="tb '+(ST.tab==="ejercicio"?"ton":"tof")+'" onclick="st(\'ejercicio\')">🏃 Ejercicio</button></div>';
 
-function calc(){
-const t={C:0,S:0,F:0,M:0};
-Object.values(S.ans).forEach(s=>{Object.entries(s).forEach(([k,v])=>{t[k]+=v})});
-const total=Object.values(t).reduce((a,b)=>a+b,0)||1;
-const sorted=Object.entries(t).sort((a,b)=>b[1]-a[1]);
-const p=sorted[0],s=sorted[1];
-const fus=s[1]>=p[1]*.6;
-const opp=p[0]==="C"?"F":p[0]==="F"?"C":p[0]==="S"?"M":"S";
-return{t,total,sorted,p,s,fus,opp};
+if(ST.tab==="resultado"){
+h+='<div class="card"><h1 style="font-size:22px;font-weight:800;text-align:center;margin-bottom:2px">Tu Resultado</h1><p style="text-align:center;color:#888;font-size:13px;margin-bottom:20px">Basado en 20 respuestas</p>';
+h+='<div class="bc" style="background:'+p.bg+';border:2px solid '+p.co+'"><div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="font-size:32px">'+p.e+'</span><div style="flex:1"><div style="font-size:10px;color:'+p.co+';font-weight:700;text-transform:uppercase;letter-spacing:1.2px">Biotipo dominante</div><div style="font-size:24px;font-weight:800">'+p.n+'</div></div><div style="font-size:24px;font-weight:800;color:'+p.co+'">'+Math.round((r.p[1]/r.total)*100)+'%</div></div><p style="font-size:13px;color:#444;line-height:1.6;margin:0 0 10px">'+p.de+'</p><div class="g2"><div class="gc"><strong style="color:'+p.co+'">Energía</strong><br>'+p.ey+'</div><div class="gc"><strong style="color:'+p.co+'">Estación</strong><br>'+p.se+'</div></div><div class="gc" style="margin-top:8px"><strong style="color:'+p.co+'">Fortalezas:</strong> '+p.st+'</div><div class="gc" style="margin-top:6px"><strong style="color:#999">Sombra:</strong> '+p.sh+'</div><div class="gc" style="margin-top:6px"><strong style="color:'+p.co+'">Pareja complementaria:</strong> '+p.pa+'</div></div>';
+if(r.fus)h+='<div class="bc" style="background:'+s.bg+';border:1.5px solid '+s.co+'"><div style="display:flex;align-items:center;gap:10px"><span style="font-size:26px">'+s.e+'</span><div style="flex:1"><div style="font-size:10px;color:'+s.co+';font-weight:700;text-transform:uppercase;letter-spacing:1.2px">Biotipo secundario · Fusión</div><div style="font-size:20px;font-weight:700">'+s.n+'</div></div><div style="font-size:20px;font-weight:800;color:'+s.co+'">'+Math.round((r.s[1]/r.total)*100)+'%</div></div><p style="font-size:12px;color:#555;line-height:1.5;margin:8px 0 0">'+s.de+'</p></div>';
+h+='<div style="background:#f8f9fa;border-radius:14px;padding:16px;margin-bottom:14px"><div style="font-size:13px;font-weight:700;color:#555;margin-bottom:12px">Distribución completa</div>';
+r.sorted.forEach(function(e){var b=B[e[0]],pct=Math.round((e[1]/r.total)*100);h+='<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px"><span style="font-weight:600;color:'+b.co+'">'+b.e+' '+b.n+'</span><span style="color:#888">'+pct+'%</span></div><div class="ct"><div class="cf" style="width:'+pct+'%;background:'+b.co+'"></div></div></div>'});
+h+='</div>';
+if(r.fus)h+='<div class="ic" style="background:#fffbe6;border-color:#f0c040;font-size:13px;color:#665500;line-height:1.5"><strong>⚡ Fusión '+p.n+'-'+s.n+'</strong> — Casi nadie es un biotipo puro. Tu biología mezcla rasgos de ambos ejes.</div>';
+h+='<div class="ic" style="background:#f0f8ff;border-color:#b8d4e8"><div style="font-size:13px;font-weight:700;color:#2c5282;margin-bottom:6px">🧭 Camino de compensación</div><p style="font-size:13px;color:#444;line-height:1.6;margin:0">Según la tradición de los temperamentos, tu opuesto es <strong style="color:'+o.co+'">'+o.n+' '+o.e+'</strong>. Una vez domines tu biología, tu evolución viene de integrar las fortalezas de este opuesto: <em>'+o.st.toLowerCase()+'</em></p></div></div>';
 }
 
-function render(){
-const app=document.getElementById("app");
-if(S.scr==="start")renderStart(app);
-else if(S.scr==="quiz")renderQuiz(app);
-else renderResults(app);
+if(ST.tab==="alimentacion"){
+h+='<div class="card"><h2 style="font-size:18px;font-weight:800;margin-bottom:4px">🥗 Tu Guía de Alimentación</h2><p style="font-size:12px;color:#888;margin-bottom:16px">Personalizada para '+p.n+(r.fus?' con fusión '+s.n:'')+'</p>';
+h+='<div class="ic" style="background:'+p.bg+';border-color:'+p.co+'"><div style="font-size:12px;font-weight:700;color:'+p.co+';margin-bottom:4px">'+p.e+' Principio '+p.n+'</div><p style="font-size:13px;color:#444;line-height:1.5;margin:0;font-style:italic">'+FP[pk]+'</p></div>';
+if(r.fus)h+='<div class="ic" style="background:'+s.bg+';border-color:'+s.co+'"><div style="font-size:12px;font-weight:700;color:'+s.co+';margin-bottom:4px">'+s.e+' Principio '+s.n+'</div><p style="font-size:12px;color:#555;line-height:1.5;margin:0;font-style:italic">'+FP[sk]+'</p></div>';
+h+='<div class="ft">';fd.forEach(function(c,i){h+='<button class="fb '+(ST.fc===i?'fon':'fof')+'" onclick="sf('+i+')">'+c.c+'</button>'});h+='</div>';
+h+='<div style="font-size:13px;font-weight:700;color:#15803d;margin-bottom:8px;display:flex;align-items:center;gap:6px"><span>✅</span> Recomendado</div>';
+cc.g.forEach(function(item){h+='<div class="gi gg"><span style="flex-shrink:0;margin-top:1px">•</span><span>'+item+'</span></div>'});
+if(r.fus&&fdS&&fdS[ST.fc]){var exG=fdS[ST.fc].g.filter(function(f){return cc.g.indexOf(f)===-1}).slice(0,2);if(exG.length){h+='<div style="height:8px"></div><div style="font-size:12px;color:'+s.co+';font-weight:600;margin-bottom:6px">'+s.e+' Extra por tu fusión '+s.n+':</div>';exG.forEach(function(item){h+='<div class="gi gg"><span style="flex-shrink:0;margin-top:1px">•</span><span>'+item+'</span></div>'})}}
+h+='<div style="height:16px"></div><div style="font-size:13px;font-weight:700;color:#b91c1c;margin-bottom:8px;display:flex;align-items:center;gap:6px"><span>🚫</span> Evitar</div>';
+cc.a.forEach(function(item){h+='<div class="gi ga"><span style="flex-shrink:0;margin-top:1px">✕</span><span>'+item+'</span></div>'});
+if(r.fus&&fdS&&fdS[ST.fc]){var exA=fdS[ST.fc].a.filter(function(f){return cc.a.indexOf(f)===-1}).slice(0,2);if(exA.length){h+='<div style="height:8px"></div><div style="font-size:12px;color:'+s.co+';font-weight:600;margin-bottom:6px">'+s.e+' Evitar por tu '+s.n+':</div>';exA.forEach(function(item){h+='<div class="gi ga"><span style="flex-shrink:0;margin-top:1px">✕</span><span>'+item+'</span></div>'})}}
+h+='<div class="tb2" style="background:#f8f4f0;border-color:#e8e0d8"><div style="font-size:12px;font-weight:700;color:#1a1a2e;margin-bottom:6px">🎯 Tu regla de oro</div><p style="font-size:12px;color:#555;line-height:1.6">'+FT[pk]+'</p></div></div>';
 }
 
-function renderStart(app){
-app.innerHTML=`<div class="card fade" style="text-align:center">
-<div style="font-size:56px;margin-bottom:12px">🧬</div>
-<h1 style="font-size:24px;font-weight:800;margin-bottom:4px;letter-spacing:-.5px">Test de Biotipos</h1>
-<p style="color:#e67e22;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Medicina Unani</p>
-<p style="color:#888;font-size:13px;margin-bottom:16px">Descubre tu temperamento según la medicina tradicional</p>
-<div style="display:flex;justify-content:center;gap:10px;margin:20px 0;flex-wrap:wrap">
-${Object.entries(B).map(([k,b])=>`<div class="el-chip" style="background:${b.bg};border:1px solid ${b.color}22"><span class="emoji">${b.el}</span><span class="name" style="color:${b.color}">${b.name}</span><span class="sub">${b.elN}</span></div>`).join("")}
-</div>
-<div style="text-align:left;margin:24px 0;display:flex;flex-direction:column;gap:14px">
-${[["📋","20 preguntas","Cuerpo, mente, energía, alimentación, relaciones, emociones y entorno"],
-["🎯","Tu biotipo completo","Dominante, secundario y posibles fusiones"],
-["🥗","Alimentación personalizada","Qué comer y qué evitar según tu resultado"],
-["🏃","Ejercicio recomendado","Actividades ideales para tu constitución"],
-["⏱️","5 minutos","Todo lo que necesitas para empezar a conocerte"]
-].map(([i,t,d])=>`<div class="feat-row"><span class="feat-icon">${i}</span><div><div class="feat-title">${t}</div><div class="feat-desc">${d}</div></div></div>`).join("")}
-</div>
-<button class="btn-main" onclick="startQuiz()">Empezar el test</button>
-<p class="disc" style="margin-top:16px">Basado en medicina Unani (Dr. David Duarte) y RGP Method (Rodrigo García Platas). Test orientativo — no sustituye valoración profesional.</p>
-</div>`;
+if(ST.tab==="ejercicio"){
+h+='<div class="card"><h2 style="font-size:18px;font-weight:800;margin-bottom:4px">🏃 Tu Guía de Ejercicio</h2><p style="font-size:12px;color:#888;margin-bottom:16px">Personalizada para '+p.n+(r.fus?' con fusión '+s.n:'')+'</p>';
+h+='<div class="ic" style="background:'+p.bg+';border-color:'+p.co+'"><div style="font-size:12px;font-weight:700;color:'+p.co+';margin-bottom:4px">'+p.e+' Filosofía '+p.n+'</div><p style="font-size:13px;color:#444;line-height:1.6;margin:0;font-style:italic">'+ed.ti+'</p></div>';
+if(r.fus&&edS)h+='<div class="ic" style="background:'+s.bg+';border-color:'+s.co+'"><div style="font-size:12px;font-weight:700;color:'+s.co+';margin-bottom:4px">'+s.e+' Filosofía '+s.n+'</div><p style="font-size:12px;color:#555;line-height:1.5;margin:0;font-style:italic">'+edS.ti+'</p></div>';
+h+='<div style="font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:12px">✅ Actividades ideales</div>';
+ed.id.forEach(function(item){h+='<div class="gi gg"><span style="flex-shrink:0">💪</span><span>'+item+'</span></div>'});
+h+='<div style="height:8px"></div><div style="font-size:13px;font-weight:600;color:#666;margin-bottom:8px">👍 También compatibles</div>';
+ed.co.forEach(function(item){h+='<div class="gi gc2"><span style="flex-shrink:0">•</span><span>'+item+'</span></div>'});
+if(r.fus&&edS){var exE=edS.id.filter(function(f){return ed.id.indexOf(f)===-1&&ed.co.indexOf(f)===-1}).slice(0,3);if(exE.length){h+='<div style="height:8px"></div><div style="font-size:12px;color:'+s.co+';font-weight:600;margin-bottom:8px">'+s.e+' Extra por tu fusión '+s.n+'</div>';exE.forEach(function(item){h+='<div class="gi" style="background:'+s.bg+';border:1px solid '+s.co+'44;border-radius:10px;padding:8px 12px;font-size:12px;color:#444"><span style="flex-shrink:0">•</span><span>'+item+'</span></div>'})}}
+h+='<div style="height:16px"></div><div style="font-size:14px;font-weight:700;color:#b91c1c;margin-bottom:12px">🚫 Evitar o limitar</div>';
+ed.av.forEach(function(item){h+='<div class="gi ga"><span style="flex-shrink:0">✕</span><span>'+item+'</span></div>'});
+h+='<div class="tb2" style="background:#f0faf0;border-color:#c8e8c8"><div style="font-size:12px;font-weight:700;color:#1a1a2e;margin-bottom:6px">💡 Complemento post-ejercicio</div><p style="font-size:12px;color:#555;line-height:1.6">'+ed.cm+'</p></div></div>';
 }
 
-function renderQuiz(app){
-const q=Q[S.cQ];
-const pct=((S.cQ)/Q.length)*100;
-app.innerHTML=`<div class="card fade">
-<div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div><span style="font-size:13px;color:#888;min-width:48px;text-align:right;font-weight:600">${S.cQ+1}/${Q.length}</span></div>
-<div class="badge">${q.icon} ${q.cat}</div>
-<h2 style="font-size:18px;font-weight:700;line-height:1.4;margin-bottom:20px">${q.q}</h2>
-<div style="display:flex;flex-direction:column;gap:10px">
-${q.opts.map((o,i)=>`<button class="opt-btn" onclick="answer(${i})">${o.t}</button>`).join("")}
-</div>
-${S.cQ>0?`<button class="back-btn" onclick="goBack()">← Anterior</button>`:""}
-</div>`;
+// Actions
+h+='<div class="card"><button class="br" onclick="rs()">🔄 Repetir test</button><button class="bw" onclick="sh()">📲 Compartir por WhatsApp</button></div>';
+// Disclaimer
+h+='<div style="padding:16px;background:#f8f8f8;border-radius:16px;border:1px solid #e8e8e8;margin-bottom:16px"><p style="font-size:11px;color:#999;line-height:1.7;text-align:center;margin:0 0 8px">⚕️ <strong style="color:#777">Aviso importante</strong></p><p style="font-size:11px;color:#aaa;line-height:1.7;text-align:center;margin:0 0 8px">Este test es una herramienta de <strong>autoconocimiento orientativo</strong> basada en la tradición milenaria de la medicina Unani y los cuatro temperamentos de Hipócrates y Galeno. Su objetivo es educativo y divulgativo.</p><p style="font-size:11px;color:#aaa;line-height:1.7;text-align:center;margin:0 0 8px"><strong>No sustituye el diagnóstico, consejo ni tratamiento de profesionales de la salud.</strong> Si tienes dudas sobre tu alimentación, ejercicio o bienestar, consulta con un médico, nutricionista, entrenador cualificado o terapeuta.</p><p style="font-size:11px;color:#bbb;line-height:1.7;text-align:center;margin:0">Para una lectura profesional de biotipos, consulta con un terapeuta especializado en medicina Unani o desarrollo humano basado en temperamentos.</p></div></div>';
+
+a.innerHTML=h;
+setTimeout(function(){document.querySelectorAll(".cf").forEach(function(el){var w=el.style.width;el.style.width="0%";setTimeout(function(){el.style.width=w},50)})},100);
 }
 
-function renderResults(app){
-const r=calc();
-const pk=r.p[0],sk=r.s[0],ok=r.opp;
-const p=B[pk],s=B[sk],o=B[ok];
-const pF=FOOD[pk],sF=r.fus?FOOD[sk]:null;
-const pE=EXER[pk],sE=r.fus?EXER[sk]:null;
-
-let h=`<div class="fade">`;
-
-// === RESULT CARD ===
-h+=`<div class="card">
-<h1 style="font-size:22px;font-weight:800;text-align:center;margin-bottom:2px">Tu Resultado</h1>
-<p style="text-align:center;color:#888;font-size:13px;margin-bottom:20px">Basado en 20 respuestas</p>
-
-<div class="bio-card" style="background:${p.bg};border:2px solid ${p.color}">
-<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-<span style="font-size:32px">${p.el}</span>
-<div style="flex:1"><div style="font-size:10px;color:${p.color};font-weight:700;text-transform:uppercase;letter-spacing:1.2px">Biotipo dominante</div><div style="font-size:24px;font-weight:800">${p.name}</div></div>
-<div style="font-size:24px;font-weight:800;color:${p.color}">${Math.round((r.p[1]/r.total)*100)}%</div>
-</div>
-<p style="font-size:13px;color:#444;line-height:1.6;margin:0 0 10px">${p.desc}</p>
-<div class="grid2">
-<div class="grid-cell"><strong style="color:${p.color}">Energía</strong><br>${p.energy}</div>
-<div class="grid-cell"><strong style="color:${p.color}">Estación</strong><br>${p.season}</div>
-</div>
-<div class="grid-cell" style="margin-top:8px"><strong style="color:${p.color}">Fortalezas:</strong> ${p.str}</div>
-<div class="grid-cell" style="margin-top:6px"><strong style="color:#999">Sombra:</strong> ${p.shadow}</div>
-</div>`;
-
-if(r.fus){
-h+=`<div class="bio-card" style="background:${s.bg};border:1.5px solid ${s.color}">
-<div style="display:flex;align-items:center;gap:10px">
-<span style="font-size:26px">${s.el}</span>
-<div style="flex:1"><div style="font-size:10px;color:${s.color};font-weight:700;text-transform:uppercase;letter-spacing:1.2px">Biotipo secundario · Fusión</div><div style="font-size:20px;font-weight:700">${s.name}</div></div>
-<div style="font-size:20px;font-weight:800;color:${s.color}">${Math.round((r.s[1]/r.total)*100)}%</div>
-</div>
-<p style="font-size:12px;color:#555;line-height:1.5;margin:8px 0 0">${s.desc}</p>
-</div>`;
-}
-
-// Chart
-h+=`<div style="background:#f8f9fa;border-radius:14px;padding:16px;margin-bottom:14px">
-<div style="font-size:13px;font-weight:700;color:#555;margin-bottom:12px">Distribución completa</div>`;
-r.sorted.forEach(([k,v])=>{
-const b=B[k],pct=Math.round((v/r.total)*100);
-h+=`<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px"><span style="font-weight:600;color:${b.color}">${b.el} ${b.name}</span><span style="color:#888">${pct}%</span></div><div class="chart-track"><div class="chart-fill" style="width:${pct}%;background:${b.color}"></div></div></div>`;
-});
-h+=`</div>`;
-
-if(r.fus){
-h+=`<div class="info-card" style="background:#fffbe6;border-color:#f0c040;font-size:13px;color:#665500;line-height:1.5"><strong>⚡ Fusión ${p.name}-${s.name}</strong> — Casi nadie es un biotipo puro. Tu biología mezcla rasgos de ambos ejes, y tu personalidad adulta puede estar compensando tu temperamento original.</div>`;
-}
-
-h+=`<div class="info-card" style="background:#f0f8ff;border-color:#b8d4e8">
-<div style="font-size:13px;font-weight:700;color:#2c5282;margin-bottom:6px">🧭 Camino de compensación (Paso 3 · RGP Method)</div>
-<p style="font-size:13px;color:#444;line-height:1.6;margin:0">Tu opuesto es <strong style="color:${o.color}">${o.name} ${o.el}</strong>. Una vez domines tu biología, tu evolución viene de integrar conscientemente las fortalezas de este opuesto: <em>${o.str.toLowerCase()}</em></p>
-</div>
-</div>`;
-
-// === TABS ===
-h+=`<div class="tab-row">
-<button class="tab-btn ${S.tab==="resultado"?"on":"off"}" onclick="setTab('resultado')">📊 Resultado</button>
-<button class="tab-btn ${S.tab==="alimentacion"?"on":"off"}" onclick="setTab('alimentacion')">🥗 Alimentación</button>
-<button class="tab-btn ${S.tab==="ejercicio"?"on":"off"}" onclick="setTab('ejercicio')">🏃 Ejercicio</button>
-</div>`;
-
-// === FOOD TAB ===
-if(S.tab==="alimentacion"){
-h+=`<div class="card fade">
-<h2 style="font-size:18px;font-weight:800;margin-bottom:4px">🥗 Tu Alimentación</h2>
-<p style="font-size:12px;color:#888;margin-bottom:20px">Recomendaciones para ${p.name}${r.fus?` con fusión ${s.name}`:""}</p>
-
-<div class="info-card" style="background:${p.bg};border-color:${p.color}">
-<div style="font-size:13px;font-weight:700;color:${p.color};margin-bottom:4px">${p.el} Consejo ${p.name}</div>
-<p style="font-size:13px;color:#444;line-height:1.5;margin:0;font-style:italic">${pF.tip}</p>
-</div>`;
-
-if(r.fus&&sF){
-h+=`<div class="info-card" style="background:${s.bg};border-color:${s.color}">
-<div style="font-size:13px;font-weight:700;color:${s.color};margin-bottom:4px">${s.el} Consejo ${s.name}</div>
-<p style="font-size:13px;color:#444;line-height:1.5;margin:0;font-style:italic">${sF.tip}</p>
-</div>`;
-}
-
-h+=`<div class="section-title"><span style="font-size:18px">✅</span> Alimentos recomendados</div>`;
-pF.good.forEach(i=>{h+=`<div class="item-row"><span class="item-icon">•</span><span>${i}</span></div>`});
-
-if(r.fus&&sF){
-const extra=sF.good.filter(f=>!pF.good.includes(f)).slice(0,4);
-if(extra.length){
-h+=`<div style="height:12px"></div><div style="font-size:12px;color:${s.color};font-weight:600;margin-bottom:6px">${s.el} También por tu ${s.name}:</div>`;
-extra.forEach(i=>{h+=`<div class="item-row"><span class="item-icon">•</span><span>${i}</span></div>`});
-}}
-
-h+=`<div style="height:20px"></div><div class="section-title"><span style="font-size:18px">🚫</span> Alimentos a evitar</div>`;
-pF.avoid.forEach(i=>{h+=`<div class="item-row"><span class="item-icon">✕</span><span>${i}</span></div>`});
-
-if(r.fus&&sF){
-const extra=sF.avoid.filter(f=>!pF.avoid.includes(f)).slice(0,4);
-if(extra.length){
-h+=`<div style="height:12px"></div><div style="font-size:12px;color:${s.color};font-weight:600;margin-bottom:6px">${s.el} También evitar por tu ${s.name}:</div>`;
-extra.forEach(i=>{h+=`<div class="item-row"><span class="item-icon">✕</span><span>${i}</span></div>`});
-}}
-
-h+=`<div class="tip-box" style="background:#f8f4f0;border-color:#e8e0d8"><div class="tip-title">🎯 Regla de oro</div><p class="tip-text">${pF.rule}</p></div>
-</div>`;
-}
-
-// === EXERCISE TAB ===
-if(S.tab==="ejercicio"){
-h+=`<div class="card fade">
-<h2 style="font-size:18px;font-weight:800;margin-bottom:4px">🏃 Tu Ejercicio</h2>
-<p style="font-size:12px;color:#888;margin-bottom:20px">Actividad física ideal para ${p.name}${r.fus?` con fusión ${s.name}`:""}</p>
-
-<div class="info-card" style="background:${p.bg};border-color:${p.color}">
-<div style="font-size:13px;font-weight:700;color:${p.color};margin-bottom:4px">${p.el} Filosofía ${p.name}</div>
-<p style="font-size:13px;color:#444;line-height:1.5;margin:0;font-style:italic">${pE.tip}</p>
-</div>`;
-
-if(r.fus&&sE){
-h+=`<div class="info-card" style="background:${s.bg};border-color:${s.color}">
-<div style="font-size:13px;font-weight:700;color:${s.color};margin-bottom:4px">${s.el} Filosofía ${s.name}</div>
-<p style="font-size:13px;color:#444;line-height:1.5;margin:0;font-style:italic">${sE.tip}</p>
-</div>`;
-}
-
-h+=`<div class="section-title"><span style="font-size:18px">✅</span> Actividades recomendadas</div>`;
-pE.good.forEach(i=>{h+=`<div class="item-row"><span class="item-icon">•</span><span>${i}</span></div>`});
-
-if(r.fus&&sE){
-const extra=sE.good.filter(f=>!pE.good.includes(f)).slice(0,4);
-if(extra.length){
-h+=`<div style="height:12px"></div><div style="font-size:12px;color:${s.color};font-weight:600;margin-bottom:6px">${s.el} También por tu ${s.name}:</div>`;
-extra.forEach(i=>{h+=`<div class="item-row"><span class="item-icon">•</span><span>${i}</span></div>`});
-}}
-
-h+=`<div style="height:20px"></div><div class="section-title"><span style="font-size:18px">🚫</span> Actividades a evitar</div>`;
-pE.avoid.forEach(i=>{h+=`<div class="item-row"><span class="item-icon">✕</span><span>${i}</span></div>`});
-
-if(r.fus&&sE){
-const extra=sE.avoid.filter(f=>!pE.avoid.includes(f)).slice(0,3);
-if(extra.length){
-h+=`<div style="height:12px"></div><div style="font-size:12px;color:${s.color};font-weight:600;margin-bottom:6px">${s.el} También evitar por tu ${s.name}:</div>`;
-extra.forEach(i=>{h+=`<div class="item-row"><span class="item-icon">✕</span><span>${i}</span></div>`});
-}}
-
-const compTip=(pk==="S"||sk==="S")?EXER.S.comp:(pk==="F"||sk==="F")?EXER.F.comp:(pk==="M"||sk==="M")?EXER.M.comp:EXER.C.comp;
-h+=`<div class="tip-box" style="background:#f0faf0;border-color:#c8e8c8"><div class="tip-title">💡 Complemento ideal</div><p class="tip-text">${compTip}</p></div>
-</div>`;
-}
-
-// === ACTIONS ===
-h+=`<div class="card">
-<button class="btn-reset" onclick="reset()">🔄 Repetir test</button>
-<button class="btn-wa" onclick="share()">📲 Compartir por WhatsApp</button>
-<p class="disc">Test orientativo · Medicina Unani (Dr. David Duarte) · RGP Method (Rodrigo García Platas)<br>No sustituye la valoración de un profesional certificado.</p>
-</div>
-</div>`;
-
-app.innerHTML=h;
-setTimeout(()=>{document.querySelectorAll('.chart-fill').forEach(el=>{const w=el.style.width;el.style.width='0%';setTimeout(()=>{el.style.width=w},50)})},100);
-}
-
-function startQuiz(){S={scr:"quiz",cQ:0,ans:{},tab:"resultado"};render();window.scrollTo(0,0)}
-function answer(i){
-const opt=Q[S.cQ].opts[i];
-S.ans[S.cQ]=opt.s;
-if(S.cQ<Q.length-1){setTimeout(()=>{S.cQ++;render();window.scrollTo(0,0)},200)}
-else{setTimeout(()=>{S.scr="results";S.tab="resultado";render();window.scrollTo(0,0)},300)}
-}
-function goBack(){if(S.cQ>0){S.cQ--;render();window.scrollTo(0,0)}}
-function setTab(t){S.tab=t;render();window.scrollTo(0,0)}
-function reset(){S={scr:"start",cQ:0,ans:{},tab:"resultado"};render();window.scrollTo(0,0)}
-function share(){
-const r=calc(),p=B[r.p[0]],s=B[r.s[0]];
-let m=`🧬 *Mi resultado — Test de Biotipos Unani*\n\n${p.el} *${p.name}* (${Math.round((r.p[1]/r.total)*100)}%)\n${p.desc}\n\n`;
-if(r.fus)m+=`${s.el} *Secundario: ${s.name}* (${Math.round((r.s[1]/r.total)*100)}%)\n⚡ Fusión ${p.name}-${s.name}\n\n`;
-m+=`📊 *Distribución:*\n`;
-r.sorted.forEach(([k,v])=>{m+=`${B[k].el} ${B[k].name}: ${Math.round((v/r.total)*100)}%\n`});
-m+=`\n🔗 ¡Haz el test tú también!\n`;
-const url=window.location.href;
-if(url&&!url.startsWith('blob:'))m+=url;
-window.open(`https://wa.me/?text=${encodeURIComponent(m)}`,'_blank');
-}
+function go(){ST={scr:"quiz",cQ:0,ans:{},tab:"resultado",fc:0};render();window.scrollTo(0,0)}
+function ans(i){var opt=Q[ST.cQ].o[i];ST.ans[ST.cQ]=opt.s;if(ST.cQ<Q.length-1){setTimeout(function(){ST.cQ++;render();window.scrollTo(0,0)},200)}else{setTimeout(function(){ST.scr="results";ST.tab="resultado";ST.fc=0;render();window.scrollTo(0,0)},300)}}
+function bk(){if(ST.cQ>0){ST.cQ--;render();window.scrollTo(0,0)}}
+function st(t){ST.tab=t;ST.fc=0;render();window.scrollTo(0,0)}
+function sf(i){ST.fc=i;render();window.scrollTo(0,0)}
+function rs(){ST={scr:"start",cQ:0,ans:{},tab:"resultado",fc:0};render();window.scrollTo(0,0)}
+function sh(){var r=calc(),p=B[r.p[0]],s=B[r.s[0]];var m="🧬 *Mi resultado — Test de Biotipos Unani*\n\n"+p.e+" *"+p.n+"* ("+Math.round((r.p[1]/r.total)*100)+"%)\n"+p.de+"\n\n";if(r.fus)m+=s.e+" *Secundario: "+s.n+"* ("+Math.round((r.s[1]/r.total)*100)+"%)\n⚡ Fusión "+p.n+"-"+s.n+"\n\n";m+="📊 *Distribución:*\n";r.sorted.forEach(function(e){m+=B[e[0]].e+" "+B[e[0]].n+": "+Math.round((e[1]/r.total)*100)+"%\n"});m+="\n🔗 ¡Haz el test tú también!\n"+window.location.href.split("?")[0];window.open("https://wa.me/?text="+encodeURIComponent(m),"_blank")}
 render();
 </script>
 </body>
 </html>
+
