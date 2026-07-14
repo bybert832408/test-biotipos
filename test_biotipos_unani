@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Test de Biotipos Unani</title>
+<meta name="description" content="Descubre tu biotipo según la medicina Unani: Colérico, Sanguíneo, Flemático o Melancólico.">
+<meta property="og:title" content="Test de Biotipos Unani">
+<meta property="og:description" content="Descubre tu biotipo dominante y secundario con este test de 16 preguntas basado en la medicina tradicional Unani.">
+<meta property="og:type" content="website">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:#f5f3f0;min-height:100vh;color:#1a1a2e}
+  .container{max-width:560px;margin:0 auto;padding:16px}
+  .card{background:#fff;border-radius:20px;padding:24px 20px;box-shadow:0 2px 20px rgba(0,0,0,0.06)}
+  
+  /* Header */
+  .header{text-align:center;margin-bottom:24px}
+  .header-icon{font-size:36px;margin-bottom:8px}
+  .header h1{font-size:20px;font-weight:700;margin-bottom:4px}
+  .header p{font-size:12px;color:#888}
+  
+  /* Progress */
+  .progress-wrap{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+  .progress-bar{flex:1;background:#e8e8e8;border-radius:6px;height:6px;overflow:hidden}
+  .progress-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#27ae60,#2980b9,#e67e22,#c0392b);transition:width .3s ease}
+  .progress-text{font-size:12px;color:#888;min-width:40px;text-align:right}
+  
+  /* Category badge */
+  .badge{display:inline-flex;align-items:center;gap:5px;background:#f0f0f0;border-radius:20px;padding:4px 12px;font-size:12px;color:#555;margin-bottom:14px}
+  
+  /* Question */
+  .question{font-size:17px;font-weight:600;line-height:1.4;margin-bottom:18px}
+  
+  /* Options */
+  .options{display:flex;flex-direction:column;gap:10px}
+  .option-btn{padding:14px 16px;border:1.5px solid #ddd;border-radius:12px;background:#fff;font-size:14px;color:#333;text-align:left;cursor:pointer;line-height:1.4;transition:all .15s ease;font-family:inherit;-webkit-tap-highlight-color:transparent}
+  .option-btn:hover{border-color:#aaa;background:#fafafa}
+  .option-btn:active,.option-btn.selected{border-color:#1a1a2e;background:#f0f0f5;border-width:2px}
+  
+  /* Back */
+  .back-btn{display:block;margin:16px auto 0;padding:10px 24px;border:none;background:transparent;color:#888;font-size:13px;cursor:pointer;text-decoration:underline;font-family:inherit}
+  
+  /* Results */
+  .result-title{font-size:22px;font-weight:700;text-align:center;margin-bottom:4px}
+  .result-sub{text-align:center;color:#666;font-size:13px;margin-bottom:24px}
+  
+  .bio-card{border-radius:16px;padding:20px;margin-bottom:16px}
+  .bio-card.primary{border-width:2px;border-style:solid}
+  .bio-card.secondary{border-width:1.5px;border-style:solid}
+  .bio-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .bio-emoji{font-size:28px}
+  .bio-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px}
+  .bio-name{font-size:22px;font-weight:700;color:#1a1a2e}
+  .bio-name.secondary{font-size:18px}
+  .bio-pct{margin-left:auto;font-weight:800}
+  .bio-pct.primary{font-size:22px}
+  .bio-pct.secondary{font-size:18px}
+  .bio-desc{font-size:14px;color:#333;line-height:1.5;margin-top:8px}
+  .bio-details{margin-top:12px;padding:10px 12px;background:rgba(255,255,255,0.7);border-radius:10px;font-size:13px;color:#444;line-height:1.6}
+  
+  /* Chart */
+  .chart-box{background:#f8f9fa;border-radius:14px;padding:16px;margin-bottom:16px}
+  .chart-title{font-size:13px;font-weight:600;color:#555;margin-bottom:12px}
+  .chart-row{margin-bottom:10px}
+  .chart-labels{display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px}
+  .chart-name{font-weight:600}
+  .chart-pct{color:#666}
+  .chart-track{background:#e0e0e0;border-radius:6px;height:10px;overflow:hidden}
+  .chart-fill{height:100%;border-radius:6px;transition:width .8s ease}
+  
+  /* Info boxes */
+  .info-box{border-radius:14px;padding:16px;margin-bottom:16px;border-width:1.5px;border-style:solid}
+  .info-box.compass{background:#fff;border-color:#ddd}
+  .info-box.fusion{background:#fffbe6;border-color:#f0c040;font-size:13px;color:#665500;line-height:1.5}
+  .info-label{font-size:13px;font-weight:600;color:#555;margin-bottom:6px}
+  .info-text{font-size:13px;color:#444;line-height:1.6}
+  
+  /* Buttons */
+  .btn-primary{display:block;width:100%;padding:14px;border:none;border-radius:12px;background:#1a1a2e;color:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent}
+  .btn-share{display:block;width:100%;padding:14px;border:2px solid #25D366;border-radius:12px;background:#fff;color:#25D366;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;margin-top:10px;-webkit-tap-highlight-color:transparent}
+  
+  .disclaimer{font-size:11px;color:#999;text-align:center;line-height:1.5;margin-top:16px}
+  
+  /* Start screen */
+  .start-screen{text-align:center;padding:20px 0}
+  .start-icon{font-size:64px;margin-bottom:16px}
+  .start-features{text-align:left;margin:20px 0;padding:0 10px}
+  .start-feature{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;font-size:14px;color:#444;line-height:1.5}
+  .start-feature span:first-child{font-size:20px;flex-shrink:0}
+  
+  .elements-row{display:flex;justify-content:center;gap:16px;margin:16px 0}
+  .element-chip{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;color:#666}
+  .element-chip span:first-child{font-size:24px}
+
+  /* Smooth transitions */
+  .fade-in{animation:fadeIn .3s ease}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<div class="container" id="app"></div>
+
+<script>
+const QUESTIONS = [
+  {cat:"Físico",icon:"🦴",q:"¿Cómo describirías mejor tu complexión corporal?",opts:[
+    {t:"Proporcionado y musculoso con facilidad, incluso sin ejercicio",s:{C:3,S:1}},
+    {t:"Robusto, cuadrado, huesos pesados, estructura firme",s:{S:3,C:1}},
+    {t:"Redondeado, curvas suaves, articulaciones poco marcadas",s:{F:3}},
+    {t:"Delgado, esbelto, se me notan las articulaciones y los huesos",s:{M:3}}
+  ]},
+  {cat:"Físico",icon:"🦴",q:"¿Cómo son tus manos?",opts:[
+    {t:"Medianas y fuertes, dedos proporcionados",s:{C:3}},
+    {t:"Anchas, cuadradas, con dedos cortos y fuertes",s:{S:3}},
+    {t:"Gorditas, suaves, como de niño pequeño",s:{F:3}},
+    {t:"Largas, finas, dedos alargados y huesudos",s:{M:3}}
+  ]},
+  {cat:"Físico",icon:"🦴",q:"¿Cómo reacciona tu piel al sol?",opts:[
+    {t:"Se llena de pecas, se quema fácil, muchos lunares",s:{C:3}},
+    {t:"Se broncea bien, piel gruesa y resistente",s:{S:3}},
+    {t:"Suave, pálida, tarda en broncearse, retiene humedad",s:{F:3}},
+    {t:"Seca, fina, se arruga con facilidad, sensible al frío",s:{M:3}}
+  ]},
+  {cat:"Físico",icon:"🦴",q:"¿Cómo describes tu forma de engordar?",opts:[
+    {t:"Tiendo a ganar músculo más que grasa",s:{C:3}},
+    {t:"Engordo de forma intramuscular, me veo 'fuerte' aunque suba",s:{S:3}},
+    {t:"Retengo líquidos y acumulo grasa bajo la piel, redondeándome",s:{F:3}},
+    {t:"Acumulo grasa visceral (barriga) pero sigo delgado de brazos/piernas",s:{M:3}}
+  ]},
+  {cat:"Temperamento",icon:"🧠",q:"¿Cómo tomas decisiones importantes?",opts:[
+    {t:"Rápido, con convicción, enfocado en el resultado",s:{C:3}},
+    {t:"Con acción inmediata, resuelvo sobre la marcha",s:{S:3}},
+    {t:"Escuchando a todos, buscando consenso y armonía",s:{F:3}},
+    {t:"Analizo todo a fondo, necesito tiempo para reflexionar",s:{M:3}}
+  ]},
+  {cat:"Temperamento",icon:"🧠",q:"En un grupo de personas, ¿qué rol ocupas naturalmente?",opts:[
+    {t:"Líder: organizo, dirijo y espero resultados",s:{C:3}},
+    {t:"Promotor: animo, conecto gente, pongo energía",s:{S:3}},
+    {t:"Mediador: cuido que todos estén bien, evito conflictos",s:{F:3}},
+    {t:"Observador: analizo desde fuera, aporto cuando tengo algo sólido",s:{M:3}}
+  ]},
+  {cat:"Temperamento",icon:"🧠",q:"¿Qué te frustra más de los demás?",opts:[
+    {t:"La incompetencia y la falta de compromiso",s:{C:3}},
+    {t:"La lentitud y la falta de acción",s:{S:3}},
+    {t:"La frialdad y la falta de empatía",s:{F:3}},
+    {t:"La superficialidad y la falta de profundidad",s:{M:3}}
+  ]},
+  {cat:"Temperamento",icon:"🧠",q:"¿Cómo manejas el conflicto?",opts:[
+    {t:"De frente, sin rodeos, digo lo que pienso",s:{C:3}},
+    {t:"Con energía, improviso y busco una salida rápida",s:{S:3}},
+    {t:"Lo evito si puedo, busco la paz por encima de todo",s:{F:3}},
+    {t:"Me retiro, lo proceso internamente y respondo después",s:{M:3}}
+  ]},
+  {cat:"Energía",icon:"⚡",q:"¿Cuándo te sientes con más energía?",opts:[
+    {t:"Cuando tengo un objetivo claro y avanzo hacia él",s:{C:3}},
+    {t:"Cuando estoy rodeado de gente y hay acción",s:{S:3}},
+    {t:"Cuando estoy en un ambiente tranquilo con personas queridas",s:{F:3}},
+    {t:"Cuando tengo tiempo a solas para pensar o crear",s:{M:3}}
+  ]},
+  {cat:"Energía",icon:"⚡",q:"¿Cómo es tu relación con el sueño?",opts:[
+    {t:"Duermo poco y me levanto con energía, no necesito mucho",s:{C:3}},
+    {t:"Duermo irregular pero me recupero rápido, soy adaptable",s:{S:3}},
+    {t:"Me gusta dormir mucho, me cuesta arrancar por las mañanas",s:{F:3}},
+    {t:"Insomnio frecuente, mente activa por la noche, sueño ligero",s:{M:3}}
+  ]},
+  {cat:"Energía",icon:"⚡",q:"¿Cómo reaccionas al frío?",opts:[
+    {t:"Lo tolero bien, soy más bien caluroso",s:{C:3}},
+    {t:"Lo tolero, sudo fácil aunque haga frío",s:{S:3}},
+    {t:"Me afecta bastante, me enfermo con facilidad",s:{F:3}},
+    {t:"Me gusta el frío aunque me enfría las manos y pies",s:{M:3}}
+  ]},
+  {cat:"Alimentación",icon:"🍽️",q:"¿Cómo es tu apetito?",opts:[
+    {t:"Como poco pero contundente, 1-2 comidas fuertes al día",s:{C:3}},
+    {t:"Gran apetito, disfruto mucho comiendo, me molesta saltarme comidas",s:{S:3}},
+    {t:"Como por confort emocional, la comida me calma",s:{F:3}},
+    {t:"Apetito irregular, a veces se me olvida comer",s:{M:3}}
+  ]},
+  {cat:"Alimentación",icon:"🍽️",q:"¿Qué tipo de problemas digestivos sueles tener?",opts:[
+    {t:"Acidez, reflujo, calor estomacal",s:{C:3}},
+    {t:"Pocos, mi digestión es fuerte",s:{S:3}},
+    {t:"Digestión lenta, pesadez, hinchazón",s:{F:3}},
+    {t:"Gastritis nerviosa, gases, intestino irritable",s:{M:3}}
+  ]},
+  {cat:"Relaciones",icon:"🤝",q:"¿De qué hablas principalmente en conversación?",opts:[
+    {t:"De lo que espero de las personas y de mis metas",s:{C:3}},
+    {t:"De lo que está pasando ahora mismo, lo inmediato y práctico",s:{S:3}},
+    {t:"De mis responsabilidades, de cuidar a los demás",s:{F:3}},
+    {t:"De ideas, teorías, proyectos a largo plazo",s:{M:3}}
+  ]},
+  {cat:"Relaciones",icon:"🤝",q:"¿Qué buscas en una pareja o socio?",opts:[
+    {t:"Alguien que me admire y apoye mis ambiciones",s:{C:3}},
+    {t:"Alguien divertido, que se adapte y viva el momento",s:{S:3}},
+    {t:"Alguien que se abra emocionalmente, vulnerable y cercano",s:{F:3}},
+    {t:"Alguien que me entienda sin tener que explicar todo",s:{M:3}}
+  ]},
+  {cat:"Emocional",icon:"💫",q:"¿Cuál es tu 'veneno' emocional, lo que te desequilibra?",opts:[
+    {t:"La ira contenida, el perfeccionismo exigente con otros",s:{C:3}},
+    {t:"La impulsividad, actuar sin pensar y arrepentirme después",s:{S:3}},
+    {t:"El miedo extremo, la dependencia emocional",s:{F:3}},
+    {t:"La soledad, el sobreanálisis paralizante",s:{M:3}}
+  ]}
+];
+
+const BIOS = {
+  C:{name:"Colérico",el:"Fuego 🔥",energy:"Caliente y seco",color:"#c0392b",bg:"#fdecea",
+    desc:"Líder nato, enfocado en resultados, racional e impulsivo. Cuerpo proporcionado y musculoso. Propenso al sobrecalentamiento.",
+    exercise:"Ejercicio suave, masajes, actividades que enfríen y relajen. Evitar alta intensidad."},
+  S:{name:"Sanguíneo",el:"Aire 🌬️",energy:"Caliente y húmedo",color:"#e67e22",bg:"#fef5e7",
+    desc:"Promotor carismático, sociable, hedonista, orientado a la acción inmediata. Cuerpo robusto y cuadrado.",
+    exercise:"Saunas y vapor frecuente, actividad moderada que permita sudar. Deportes sociales."},
+  F:{name:"Flemático",el:"Agua 💧",energy:"Frío y húmedo",color:"#2980b9",bg:"#ebf5fb",
+    desc:"Empático, compasivo, emocional, mediador nato. Cuerpo redondeado y suave. Gran lealtad y constancia.",
+    exercise:"Actividad dinámica que active y caliente. Movimiento constante para contrarrestar la inercia."},
+  M:{name:"Melancólico",el:"Tierra 🌿",energy:"Frío y seco",color:"#27ae60",bg:"#eafaf1",
+    desc:"Intelectual, analítico, perfeccionista, introvertido y creativo. Cuerpo delgado y huesudo. Profundidad emocional.",
+    exercise:"Tai Chi, Aikido, natación suave, masajes frecuentes. Evitar alta intensidad."}
+};
+
+let state = {screen:"start", currentQ:0, answers:{}};
+
+function getEmoji(el){ return el.split(" ")[1]; }
+
+function calcResults(){
+  const t={C:0,S:0,F:0,M:0};
+  Object.values(state.answers).forEach(s=>{
+    Object.entries(s).forEach(([k,v])=>{ t[k]+=v; });
+  });
+  const total=Object.values(t).reduce((a,b)=>a+b,0)||1;
+  const sorted=Object.entries(t).sort((a,b)=>b[1]-a[1]);
+  const primary=sorted[0], secondary=sorted[1];
+  const hasFusion=secondary[1]>=primary[1]*0.6;
+  const opposite=primary[0]==="C"?"F":primary[0]==="F"?"C":primary[0]==="S"?"M":"S";
+  return {totals:t,total,sorted,primary,secondary,hasFusion,opposite};
+}
+
+function render(){
+  const app=document.getElementById("app");
+  if(state.screen==="start") return renderStart(app);
+  if(state.screen==="quiz") return renderQuiz(app);
+  if(state.screen==="results") return renderResults(app);
+}
+
+function renderStart(app){
+  app.innerHTML=`
+    <div class="card fade-in">
+      <div class="start-screen">
+        <div class="start-icon">🧬</div>
+        <h1 style="font-size:22px;font-weight:700;margin-bottom:4px">Test de Biotipos Unani</h1>
+        <p style="color:#888;font-size:13px;margin-bottom:8px">Descubre tu temperamento según la medicina tradicional</p>
+        <div class="elements-row">
+          <div class="element-chip"><span>🔥</span>Colérico</div>
+          <div class="element-chip"><span>🌬️</span>Sanguíneo</div>
+          <div class="element-chip"><span>💧</span>Flemático</div>
+          <div class="element-chip"><span>🌿</span>Melancólico</div>
+        </div>
+        <div class="start-features">
+          <div class="start-feature"><span>📋</span><span>16 preguntas sobre tu cuerpo, temperamento, energía, alimentación, relaciones y emociones</span></div>
+          <div class="start-feature"><span>🎯</span><span>Descubre tu biotipo dominante y si tienes una fusión con un secundario</span></div>
+          <div class="start-feature"><span>🧭</span><span>Conoce tu camino de compensación según el RGP Method</span></div>
+          <div class="start-feature"><span>⏱️</span><span>Tiempo estimado: 3-5 minutos</span></div>
+        </div>
+        <button class="btn-primary" onclick="startQuiz()">Empezar el test</button>
+      </div>
+      <p class="disclaimer" style="margin-top:12px">Basado en la medicina Unani (Dr. David Duarte) y el RGP Method (Rodrigo García Platas). Este test es orientativo y no sustituye la valoración de un profesional.</p>
+    </div>`;
+}
+
+function renderQuiz(app){
+  const q=QUESTIONS[state.currentQ];
+  const progress=((state.currentQ)/QUESTIONS.length)*100;
+  app.innerHTML=`
+    <div class="card fade-in">
+      <div class="progress-wrap">
+        <div class="progress-bar"><div class="progress-fill" style="width:${progress}%"></div></div>
+        <span class="progress-text">${state.currentQ+1}/${QUESTIONS.length}</span>
+      </div>
+      <div class="badge">${q.icon} ${q.cat}</div>
+      <div class="question">${q.q}</div>
+      <div class="options">
+        ${q.opts.map((o,i)=>`<button class="option-btn" onclick="answer(${i})">${o.t}</button>`).join("")}
+      </div>
+      ${state.currentQ>0?`<button class="back-btn" onclick="goBack()">← Pregunta anterior</button>`:""}
+    </div>`;
+}
+
+function renderResults(app){
+  const r=calcResults();
+  const p=BIOS[r.primary[0]], s=BIOS[r.secondary[0]], o=BIOS[r.opposite];
+  
+  let html=`<div class="fade-in">
+    <div class="card">
+      <div class="result-title">Tu Resultado</div>
+      <div class="result-sub">Basado en ${Object.keys(state.answers).length} respuestas</div>
+      
+      <div class="bio-card primary" style="background:${p.bg};border-color:${p.color}">
+        <div class="bio-header">
+          <span class="bio-emoji">${getEmoji(p.el)}</span>
+          <div>
+            <div class="bio-label" style="color:${p.color}">Biotipo dominante</div>
+            <div class="bio-name">${p.name}</div>
+          </div>
+          <div class="bio-pct primary" style="color:${p.color}">${Math.round((r.primary[1]/r.total)*100)}%</div>
+        </div>
+        <div class="bio-desc">${p.desc}</div>
+        <div class="bio-details"><strong>Energía:</strong> ${p.energy}<br><strong>Ejercicio:</strong> ${p.exercise}</div>
+      </div>`;
+  
+  if(r.hasFusion){
+    html+=`
+      <div class="bio-card secondary" style="background:${s.bg};border-color:${s.color}">
+        <div class="bio-header">
+          <span style="font-size:24px">${getEmoji(s.el)}</span>
+          <div>
+            <div class="bio-label" style="color:${s.color}">Biotipo secundario (fusión)</div>
+            <div class="bio-name secondary">${s.name}</div>
+          </div>
+          <div class="bio-pct secondary" style="color:${s.color}">${Math.round((r.secondary[1]/r.total)*100)}%</div>
+        </div>
+        <div class="bio-desc" style="font-size:13px;color:#444">${s.desc}</div>
+      </div>`;
+  }
+  
+  html+=`<div class="chart-box"><div class="chart-title">Distribución completa</div>`;
+  r.sorted.forEach(([k,v])=>{
+    const b=BIOS[k], pct=Math.round((v/r.total)*100);
+    html+=`<div class="chart-row">
+      <div class="chart-labels"><span class="chart-name" style="color:${b.color}">${getEmoji(b.el)} ${b.name}</span><span class="chart-pct">${pct}%</span></div>
+      <div class="chart-track"><div class="chart-fill" style="width:${pct}%;background:${b.color}"></div></div>
+    </div>`;
+  });
+  html+=`</div>`;
+  
+  html+=`
+      <div class="info-box compass">
+        <div class="info-label">🧭 Tu camino de compensación (Paso 3 del RGP Method)</div>
+        <p class="info-text">Tu biotipo opuesto es <strong style="color:${o.color}">${o.name} ${getEmoji(o.el)}</strong>.
+        Según el método, una vez que domines tu propia biología, tu crecimiento viene de desarrollar conscientemente
+        las fortalezas de este opuesto.</p>
+      </div>`;
+  
+  if(r.hasFusion){
+    html+=`<div class="info-box fusion"><strong>⚡ Fusión detectada:</strong> Tus puntuaciones sugieren una combinación ${p.name}-${s.name}. Esto es habitual — casi nadie es un biotipo puro. Tu personalidad adulta puede estar compensando o tu biología mezcla rasgos de ambos ejes.</div>`;
+  }
+  
+  html+=`
+      <button class="btn-primary" onclick="reset()">Repetir test</button>
+      <button class="btn-share" onclick="shareResults()">📲 Compartir por WhatsApp</button>
+      <p class="disclaimer">Este test es orientativo, basado en la medicina Unani y el RGP Method. Para una lectura precisa, consulta a un profesional certificado.</p>
+    </div>
+  </div>`;
+  
+  app.innerHTML=html;
+  
+  // Animate bars
+  setTimeout(()=>{
+    document.querySelectorAll('.chart-fill').forEach(el=>{
+      const w=el.style.width; el.style.width='0%';
+      setTimeout(()=>{ el.style.width=w; },50);
+    });
+  },100);
+}
+
+function startQuiz(){
+  state={screen:"quiz",currentQ:0,answers:{}};
+  render();
+}
+
+function answer(i){
+  const opt=QUESTIONS[state.currentQ].opts[i];
+  state.answers[state.currentQ]=opt.s;
+  if(state.currentQ<QUESTIONS.length-1){
+    setTimeout(()=>{ state.currentQ++; render(); },200);
+  } else {
+    setTimeout(()=>{ state.screen="results"; render(); },300);
+  }
+}
+
+function goBack(){
+  if(state.currentQ>0){ state.currentQ--; render(); }
+}
+
+function reset(){
+  state={screen:"start",currentQ:0,answers:{}};
+  render();
+}
+
+function shareResults(){
+  const r=calcResults();
+  const p=BIOS[r.primary[0]], s=BIOS[r.secondary[0]];
+  let msg=`🧬 *Mi resultado del Test de Biotipos Unani*\n\n`;
+  msg+=`${getEmoji(p.el)} *Biotipo dominante: ${p.name}* (${Math.round((r.primary[1]/r.total)*100)}%)\n`;
+  msg+=`${p.desc}\n\n`;
+  if(r.hasFusion){
+    msg+=`${getEmoji(s.el)} *Biotipo secundario: ${s.name}* (${Math.round((r.secondary[1]/r.total)*100)}%)\n`;
+    msg+=`⚡ Fusión ${p.name}-${s.name}\n\n`;
+  }
+  msg+=`📊 *Distribución:*\n`;
+  r.sorted.forEach(([k,v])=>{
+    const b=BIOS[k];
+    msg+=`${getEmoji(b.el)} ${b.name}: ${Math.round((v/r.total)*100)}%\n`;
+  });
+  msg+=`\n¡Haz el test tú también! 👇\n`;
+  
+  // Try to share the current URL if available, otherwise just share the text
+  const url = window.location.href;
+  if(url && !url.startsWith('blob:')) {
+    msg += url;
+  }
+  
+  const waUrl=`https://wa.me/?text=${encodeURIComponent(msg)}`;
+  window.open(waUrl,'_blank');
+}
+
+// Init
+render();
+</script>
+</body>
+</html>
